@@ -8,6 +8,7 @@ import {
 export default function DataKamar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState('table'); // 'table' | 'form'
+  const [selectedAsrama, setSelectedAsrama] = useState('Semua');
 
   const tableData = [
     { id: 'KMR-A01', asrama: 'Gedung Ali Bin Abi Thalib', nama: 'Kamar 01', ketua: 'Ahmad Syafi\'i', kapasitas: 20, terisi: 20 },
@@ -16,6 +17,14 @@ export default function DataKamar() {
     { id: 'KMR-F01', asrama: 'Gedung Fatimah Az-Zahra', nama: 'Kamar 01', ketua: 'Salma Zahira', kapasitas: 20, terisi: 19 },
     { id: 'KMR-Ais01', asrama: 'Gedung Aisyah', nama: 'Kamar 01', ketua: 'Nisa Rahma', kapasitas: 20, terisi: 20 },
   ];
+
+  const uniqueAsrama = ['Semua', ...Array.from(new Set(tableData.map(item => item.asrama)))];
+
+  const filteredData = tableData.filter(item => {
+    const matchSearch = item.nama.toLowerCase().includes(searchQuery.toLowerCase()) || item.ketua.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchAsrama = selectedAsrama === 'Semua' || item.asrama === selectedAsrama;
+    return matchSearch && matchAsrama;
+  });
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 animate-fade-in-right pb-10">
@@ -129,6 +138,23 @@ export default function DataKamar() {
           </div>
         </div>
 
+        {/* Asrama Filter Tabs */}
+        <div className="px-6 py-3 border-b border-slate-100 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-800/20 overflow-x-auto custom-scrollbar flex items-center gap-2">
+          {uniqueAsrama.map(asrama => (
+            <button
+              key={asrama}
+              onClick={() => setSelectedAsrama(asrama)}
+              className={`whitespace-nowrap px-4 py-2 rounded-xl text-[13px] font-bold transition-all duration-300 ${
+                selectedAsrama === asrama 
+                  ? 'bg-[#000052] text-white shadow-md shadow-[#000052]/20' 
+                  : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#000052] hover:bg-blue-50/50'
+              }`}
+            >
+              {asrama}
+            </button>
+          ))}
+        </div>
+
         {/* Table Container */}
         <div className="overflow-x-auto custom-scrollbar">
           <table className="w-full text-left border-collapse">
@@ -143,7 +169,7 @@ export default function DataKamar() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
-              {tableData.map((row) => {
+              {filteredData.map((row) => {
                 const occupancyRate = Math.round((row.terisi / row.kapasitas) * 100);
                 const isFull = occupancyRate >= 100;
                 
