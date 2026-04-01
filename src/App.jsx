@@ -16,6 +16,7 @@ import DataTransaksi from './pages/DataTransaksi';
 import DataJenisTransaksi from './pages/DataJenisTransaksi';
 import DataMataPelajaran from './pages/DataMataPelajaran';
 import DataGuru from './pages/DataGuru';
+import DataPenugasanGuru from './pages/DataPenugasanGuru';
 import DataAsrama from './pages/DataAsrama';
 import DataKamar from './pages/DataKamar';
 
@@ -74,6 +75,8 @@ function App() {
         return <DataMataPelajaran />;
       case 'Guru':
         return <DataGuru />;
+      case 'Penugasan Guru':
+        return <DataPenugasanGuru />;
       case 'Asrama':
         return <DataAsrama />;
       case 'Kamar':
