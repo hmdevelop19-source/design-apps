@@ -38,7 +38,8 @@ export default function Sidebar({ isOpen, onClose, onNavigate, activePage }) {
 
   const toggleSubMenu = (id, e) => {
     e.preventDefault();
-    setOpenMenus(prev => ({ ...prev, [id]: !prev[id] }));
+    // Efek Accordion: Tutup yang lain, buka hanya yang diklik
+    setOpenMenus(prev => prev[id] ? {} : { [id]: true });
   };
 
   return (
