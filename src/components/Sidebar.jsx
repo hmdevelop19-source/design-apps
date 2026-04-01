@@ -34,7 +34,7 @@ const navItems = [
 ];
 
 export default function Sidebar({ isOpen, onClose, onNavigate, activePage }) {
-  const [openMenus, setOpenMenus] = useState({ 'manajemen-santri': true }); // Open by default since user asked for it
+  const [openMenus, setOpenMenus] = useState({}); // Default all menus closed
 
   const toggleSubMenu = (id, e) => {
     e.preventDefault();
