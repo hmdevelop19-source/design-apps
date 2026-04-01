@@ -8,23 +8,17 @@ import {
 export default function DataPenugasanGuru() {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState('table'); // 'table' | 'form'
-  const [selectedGuru, setSelectedGuru] = useState('Semua');
-
   const tableData = [
-    { id: 'TGS-001', guru: 'Ust. Abdul Somad', mapel: 'Pendidikan Agama Islam', kelas: 'Kelas 7, Kelas 8', jam: 24, status: 'Aktif' },
-    { id: 'TGS-002', guru: 'Ust. Ramdani', mapel: 'Nahwu Shorof', kelas: 'Kelas 10', jam: 18, status: 'Aktif' },
-    { id: 'TGS-003', guru: 'Usth. Laila', mapel: 'Matematika', kelas: 'Kelas 7', jam: 12, status: 'Aktif' },
-    { id: 'TGS-004', guru: 'Ust. Fauzi', mapel: 'Aqidah Akhlaq', kelas: 'Kelas 8, Kelas 9', jam: 20, status: 'Aktif' },
-    { id: 'TGS-005', guru: 'Hj. Maisaroh', mapel: 'Fiqih', kelas: 'Kelas 12', jam: 16, status: 'Aktif' },
-    { id: 'TGS-006', guru: 'Ust. Kholil', mapel: 'Sejarah Kebudayaan Islam', kelas: 'Kelas 9', jam: 8, status: 'Non-Aktif' },
+    { id: 'TGS-001', guru: 'Ust. Abdul Somad', mapel: 'Pendidikan Agama Islam', status: 'Aktif' },
+    { id: 'TGS-002', guru: 'Ust. Ramdani', mapel: 'Nahwu Shorof', status: 'Aktif' },
+    { id: 'TGS-003', guru: 'Usth. Laila', mapel: 'Matematika', status: 'Aktif' },
+    { id: 'TGS-004', guru: 'Ust. Fauzi', mapel: 'Aqidah Akhlaq', status: 'Aktif' },
+    { id: 'TGS-005', guru: 'Hj. Maisaroh', mapel: 'Fiqih', status: 'Aktif' },
+    { id: 'TGS-006', guru: 'Ust. Kholil', mapel: 'Sejarah Kebudayaan Islam', status: 'Non-Aktif' },
   ];
 
-  const uniqueGuru = ['Semua', ...Array.from(new Set(tableData.map(item => item.guru)))];
-
   const filteredData = tableData.filter(item => {
-    const matchSearch = item.mapel.toLowerCase().includes(searchQuery.toLowerCase()) || item.guru.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchGuru = selectedGuru === 'Semua' || item.guru === selectedGuru;
-    return matchSearch && matchGuru;
+    return item.mapel.toLowerCase().includes(searchQuery.toLowerCase()) || item.guru.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   return (
@@ -102,29 +96,13 @@ export default function DataPenugasanGuru() {
               </div>
 
               <div className="space-y-2.5">
-                <label className="text-[13px] font-extrabold text-slate-700 dark:text-slate-300">Kelompok Kelas (Target Ajar)</label>
-                <input type="text" placeholder="Contoh: Kelas 7, Kelas 8" className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-[13.5px] font-medium text-slate-800 dark:text-white transition-colors" />
-                <p className="text-[11.5px] text-slate-400 font-medium">Pisahkan dengan koma jika lebih dari satu rentang kelas.</p>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2.5">
-                  <label className="text-[13px] font-extrabold text-slate-700 dark:text-slate-300">Beban / Jumlah Jam</label>
-                  <div className="relative">
-                    <Clock size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                    <input type="number" placeholder="0" className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-[13.5px] font-medium text-slate-800 dark:text-white transition-colors" />
-                  </div>
-                </div>
-
-                <div className="space-y-2.5">
-                  <label className="text-[13px] font-extrabold text-slate-700 dark:text-slate-300">Status Penugasan</label>
-                  <div className="relative">
-                    <select className="w-full appearance-none px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-[13.5px] font-medium text-slate-800 dark:text-white cursor-pointer transition-colors">
-                      <option>Aktif</option>
-                      <option>Non-Aktif</option>
-                    </select>
-                    <CaretDown size={14} weight="bold" className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
-                  </div>
+                <label className="text-[13px] font-extrabold text-slate-700 dark:text-slate-300">Status Penugasan</label>
+                <div className="relative">
+                  <select className="w-full appearance-none px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-[13.5px] font-medium text-slate-800 dark:text-white cursor-pointer transition-colors">
+                    <option>Aktif</option>
+                    <option>Non-Aktif</option>
+                  </select>
+                  <CaretDown size={14} weight="bold" className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                 </div>
               </div>
 
@@ -172,22 +150,7 @@ export default function DataPenugasanGuru() {
           </div>
         </div>
 
-        {/* Guru Filter Tabs */}
-        <div className="px-6 py-3 border-b border-slate-100 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-800/20 overflow-x-auto custom-scrollbar flex items-center gap-2">
-          {uniqueGuru.map(guru => (
-            <button
-              key={guru}
-              onClick={() => setSelectedGuru(guru)}
-              className={`whitespace-nowrap px-4 py-2 rounded-xl text-[13px] font-bold transition-all duration-300 ${
-                selectedGuru === guru 
-                  ? 'bg-[#000052] text-white shadow-md shadow-[#000052]/20' 
-                  : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#000052] hover:bg-blue-50/50'
-              }`}
-            >
-              {guru}
-            </button>
-          ))}
-        </div>
+
 
         {/* Table Container */}
         <div className="overflow-x-auto custom-scrollbar">
@@ -197,8 +160,6 @@ export default function DataPenugasanGuru() {
                 <th className="px-6 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap w-[100px]">ID TUGAS</th>
                 <th className="px-6 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">NAMA GURU TUGAS</th>
                 <th className="px-6 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">MATA PELAJARAN (MAPEL)</th>
-                <th className="px-6 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap">KLPK. KELAS</th>
-                <th className="px-6 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap text-center">JML JAM</th>
                 <th className="px-6 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap text-center">STATUS</th>
                 <th className="px-6 py-4 text-[11px] font-extrabold text-slate-400 uppercase tracking-widest whitespace-nowrap text-center">AKSI</th>
               </tr>
@@ -222,14 +183,6 @@ export default function DataPenugasanGuru() {
                       <BookOpen size={16} weight="duotone" className="text-[#FCD526]" />
                       {row.mapel}
                     </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="text-[12px] font-bold text-slate-500 dark:text-slate-400">{row.kelas}</span>
-                  </td>
-                  <td className="px-6 py-4 text-center whitespace-nowrap">
-                    <span className="inline-flex items-center gap-1 font-black text-[#000052] dark:text-white text-[14px]">
-                      {row.jam} <span className="text-[11px] text-slate-400">Jam/Mgg</span>
-                    </span>
                   </td>
                   <td className="px-6 py-4 text-center whitespace-nowrap">
                     <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-bold text-[11px] border tracking-wide ${row.status === 'Aktif' ? 'bg-[#00B0FB]/10 text-[#00B0FB] dark:bg-[#00B0FB]/20 dark:text-[#00B0FB] border-[#00B0FB]/20 dark:border-[#00B0FB]/30' : 'bg-slate-50 text-slate-500 border-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700'}`}>
