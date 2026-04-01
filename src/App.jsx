@@ -17,6 +17,8 @@ import DataJenisTransaksi from './pages/DataJenisTransaksi';
 import DataMataPelajaran from './pages/DataMataPelajaran';
 import DataGuru from './pages/DataGuru';
 import DataPenugasanGuru from './pages/DataPenugasanGuru';
+import DataJamPelajaran from './pages/DataJamPelajaran';
+import DataJadwalPelajaran from './pages/DataJadwalPelajaran';
 import DataAsrama from './pages/DataAsrama';
 import DataKamar from './pages/DataKamar';
 
@@ -77,6 +79,10 @@ function App() {
         return <DataGuru />;
       case 'Penugasan Guru':
         return <DataPenugasanGuru />;
+      case 'Jam Pelajaran':
+        return <DataJamPelajaran />;
+      case 'Jadwal Pelajaran':
+        return <DataJadwalPelajaran />;
       case 'Asrama':
         return <DataAsrama />;
       case 'Kamar':
