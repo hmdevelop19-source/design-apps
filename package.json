@@ -1,9 +1,12 @@
 {
+  "homepage": "http://hmdevelop19-source.github.io/design-apps",
   "name": "desaign-baru",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d deploy",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
