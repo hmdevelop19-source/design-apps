@@ -17,6 +17,7 @@ import DataJenisTransaksi from './pages/DataJenisTransaksi';
 import DataMataPelajaran from './pages/DataMataPelajaran';
 import DataGuru from './pages/DataGuru';
 import DataAsrama from './pages/DataAsrama';
+import DataKamar from './pages/DataKamar';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -75,6 +76,8 @@ function App() {
         return <DataGuru />;
       case 'Asrama':
         return <DataAsrama />;
+      case 'Kamar':
+        return <DataKamar />;
       case 'Dasbor':
       default:
         return (
