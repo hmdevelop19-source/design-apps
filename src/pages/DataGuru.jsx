@@ -23,11 +23,11 @@ export default function DataGuru() {
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white/50 dark:bg-bg-cardDark/50 backdrop-blur-xl p-6 rounded-3xl border border-slate-200/60 dark:border-slate-800 shadow-sm">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#FB8500] to-orange-400 shadow-lg shadow-[#FB8500]/20 flex items-center justify-center text-white shrink-0">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#FCD526] to-orange-400 shadow-lg shadow-[#FCD526]/20 flex items-center justify-center text-white shrink-0">
             <ChalkboardTeacher size={24} weight="fill" />
           </div>
           <div>
-            <h1 className="text-2xl font-black text-[#023047] dark:text-white tracking-tight">Data Guru Instansi</h1>
+            <h1 className="text-2xl font-black text-[#000052] dark:text-white tracking-tight">Data Guru Instansi</h1>
             <p className="text-[13px] font-medium text-slate-500 dark:text-slate-400 mt-1">Manajemen pendidik untuk seluruh unit / institusi pesantren</p>
           </div>
         </div>
@@ -36,7 +36,7 @@ export default function DataGuru() {
           <button className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-[13px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm">
             <Export size={16} weight="bold" /> Export
           </button>
-          <button onClick={() => setViewMode('form')} className="flex items-center gap-2 px-4 py-2.5 bg-[#023047] hover:bg-[#043e5c] text-white rounded-xl text-[13px] font-bold shadow-lg shadow-[#023047]/20 transition-all active:scale-95">
+          <button onClick={() => setViewMode('form')} className="flex items-center gap-2 px-4 py-2.5 bg-[#000052] hover:bg-[#000035] text-white rounded-xl text-[13px] font-bold shadow-lg shadow-[#000052]/20 transition-all active:scale-95">
             <Plus size={16} weight="bold" /> Tambah Guru
           </button>
         </div>
@@ -53,7 +53,7 @@ export default function DataGuru() {
                 <ArrowLeft size={20} weight="bold" />
               </button>
               <div>
-                <h2 className="text-lg font-black text-[#023047] dark:text-white">Registrasi Guru Baru</h2>
+                <h2 className="text-lg font-black text-[#000052] dark:text-white">Registrasi Guru Baru</h2>
                 <p className="text-[13px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Lengkapi form identitas pendidik instansi pesantren</p>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function DataGuru() {
                   Batal
                 </button>
                 <button 
-                  className="px-6 py-3 rounded-xl font-bold text-[13.5px] bg-[#023047] hover:bg-[#043e5c] text-white shadow-lg shadow-[#023047]/20 flex items-center gap-2 transition-transform active:scale-95"
+                  className="px-6 py-3 rounded-xl font-bold text-[13.5px] bg-[#000052] hover:bg-[#000035] text-white shadow-lg shadow-[#000052]/20 flex items-center gap-2 transition-transform active:scale-95"
                 >
                   <FloppyDisk size={18} weight="fill" />
                   Simpan Data Guru
@@ -139,7 +139,7 @@ export default function DataGuru() {
               placeholder="Cari nama atau NIK guru..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-[13px] font-medium text-slate-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#FB8500] focus:border-[#FB8500] transition-colors"
+              className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-[13px] font-medium text-slate-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#FCD526] focus:border-[#FCD526] transition-colors"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -174,7 +174,7 @@ export default function DataGuru() {
                         <UserCircle size={24} weight="fill" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="font-extrabold text-[#023047] dark:text-white text-[13.5px] pb-0.5">{row.nama}</span>
+                        <span className="font-extrabold text-[#000052] dark:text-white text-[13.5px] pb-0.5">{row.nama}</span>
                         <span className="text-[11px] font-bold text-slate-400 tracking-wider">NIK: {row.nik}</span>
                       </div>
                     </div>
@@ -193,7 +193,7 @@ export default function DataGuru() {
                         GT - TETAP
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FB8500]/10 text-[#FB8500] dark:bg-[#FB8500]/10 dark:text-[#FB8500] font-bold text-[11px] border border-[#FB8500]/20 tracking-wide">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FCD526]/10 text-[#FCD526] dark:bg-[#FCD526]/10 dark:text-[#FCD526] font-bold text-[11px] border border-[#FCD526]/20 tracking-wide">
                         GT - KONTRAK
                       </span>
                     )}
@@ -218,16 +218,16 @@ export default function DataGuru() {
         <div className="px-6 py-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
           <span className="text-[12.5px] font-medium text-slate-500 dark:text-slate-400">Menampilkan 1 sampai 5 dari 105 guru</span>
           <div className="flex items-center gap-2">
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-400 hover:text-[#023047] hover:border-slate-300 disabled:opacity-50 shadow-sm">
+            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-400 hover:text-[#000052] hover:border-slate-300 disabled:opacity-50 shadow-sm">
               <CaretLeft size={16} weight="bold" />
             </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#023047] bg-[#023047] text-white font-bold text-[13px] shadow-sm">
+            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#000052] bg-[#000052] text-white font-bold text-[13px] shadow-sm">
               1
             </button>
             <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-[13px] hover:bg-slate-50 shadow-sm">
               2
             </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-400 hover:text-[#023047] hover:border-slate-300 shadow-sm">
+            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-400 hover:text-[#000052] hover:border-slate-300 shadow-sm">
               <CaretRight size={16} weight="bold" />
             </button>
         {/* Pagination end */}

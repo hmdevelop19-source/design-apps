@@ -28,10 +28,10 @@ export default function DataTransaksi() {
       {/* Header & Main Actions */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8 text-left">
         <div>
-          <h2 className="text-2xl font-extrabold text-[#023047] dark:text-white tracking-tight">Riwayat Transaksi Bank</h2>
+          <h2 className="text-2xl font-extrabold text-[#000052] dark:text-white tracking-tight">Riwayat Transaksi Bank</h2>
           <p className="text-[13.5px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Pantau semua aktivitas setoran, penarikan, dan pemindahan saldo deposit santri.</p>
         </div>
-        <button className="flex items-center justify-center gap-2 bg-[#FB8500] hover:bg-[#e07700] text-white px-5 py-3 rounded-xl font-bold shadow-lg shadow-[#FB8500]/30 transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm">
+        <button className="flex items-center justify-center gap-2 bg-[#FCD526] hover:bg-[#e3be22] text-white px-5 py-3 rounded-xl font-bold shadow-lg shadow-[#FCD526]/30 transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm">
           <Receipt size={18} weight="bold" />
           <span className="text-[14px]">Catat Transaksi</span>
         </button>
@@ -104,7 +104,7 @@ export default function DataTransaksi() {
                     {/* ID & Tanggal */}
                     <td className="px-8 py-4">
                       <div className="flex flex-col gap-1 items-start">
-                        <span className="font-black font-mono text-[#023047] dark:text-slate-200 text-[13.5px] tracking-wider">{row.id}</span>
+                        <span className="font-black font-mono text-[#000052] dark:text-slate-200 text-[13.5px] tracking-wider">{row.id}</span>
                         <span className="text-slate-400 font-medium text-[11px]">{row.refDate}</span>
                       </div>
                     </td>
@@ -157,7 +157,7 @@ export default function DataTransaksi() {
                         <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Lihat Detail">
                           <Eye size={16} weight="regular" />
                         </button>
-                        <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#FB8500] hover:bg-orange-50 hover:border-orange-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Cetak Struk">
+                        <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#FCD526] hover:bg-orange-50 hover:border-orange-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Cetak Struk">
                           <Printer size={16} weight="regular" />
                         </button>
                       </div>
@@ -188,10 +188,10 @@ export default function DataTransaksi() {
             <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors disabled:opacity-50" disabled>
               <CaretLeft size={16} weight="bold" />
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#023047] dark:bg-slate-700 text-white font-extrabold text-[13px] shadow-md shadow-[#023047]/20">
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#000052] dark:bg-slate-700 text-white font-extrabold text-[13px] shadow-md shadow-[#000052]/20">
               1
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#023047] dark:hover:text-white transition-colors" disabled>
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#000052] dark:hover:text-white transition-colors" disabled>
               <CaretRight size={16} weight="bold" />
             </button>
           </div>

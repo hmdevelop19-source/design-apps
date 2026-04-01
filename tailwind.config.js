@@ -9,13 +9,13 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#023047', // Deep Navy
-          light: '#219EBC',
-          hover: '#011e2c',
+          DEFAULT: '#000052', // Deep Navy
+          light: '#00B0FB',
+          hover: '#000035',
         },
         accent: {
-          DEFAULT: '#FB8500', // Vibrant Orange
-          hover: '#e27700',
+          DEFAULT: '#FCD526', // Vibrant Orange
+          hover: '#e3be22',
         },
         secondary: '#64748B',
         bg: {

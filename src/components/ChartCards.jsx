@@ -74,7 +74,7 @@ export function SantriBarChart({ isDark }) {
     datasets: [{
       label: 'Jumlah Santri',
       data: [150, 180, 215, 230, 280],
-      backgroundColor: ['#b0c6d2', '#86a7bc', '#517a95', '#245171', '#FB8500'],
+      backgroundColor: ['#9999cc', '#6666b3', '#333399', '#1a1a75', '#FCD526'],
       borderRadius: 4,
       barThickness: 32
     }]
@@ -105,7 +105,7 @@ export function SantriBarChart({ isDark }) {
 export function PelanggaranProgress({ isDark }) {
   const data = [
     { label: 'Terlambat Jamaah', value: 45, color: '#EF4444' },
-    { label: 'Tidak ikut KBM', value: 25, color: '#FB8500' },
+    { label: 'Tidak ikut KBM', value: 25, color: '#FCD526' },
     { label: 'Keluar Tanpa Izin', value: 15, color: '#F59E0B' },
     { label: 'Lain-lain', value: 15, color: '#64748B' },
   ];

@@ -28,7 +28,7 @@ export default function DataMataPelajaran() {
             <BookOpen size={24} weight="fill" />
           </div>
           <div>
-            <h1 className="text-2xl font-black text-[#023047] dark:text-white tracking-tight">Data Mata Pelajaran</h1>
+            <h1 className="text-2xl font-black text-[#000052] dark:text-white tracking-tight">Data Mata Pelajaran</h1>
             <p className="text-[13px] font-medium text-slate-500 dark:text-slate-400 mt-1">Kelola kurikulum dan standar kelulusan mata pelajaran</p>
           </div>
         </div>
@@ -37,7 +37,7 @@ export default function DataMataPelajaran() {
           <button className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-[13px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors shadow-sm">
             <Export size={16} weight="bold" /> Export
           </button>
-          <button onClick={() => setViewMode('form')} className="flex items-center gap-2 px-4 py-2.5 bg-[#FB8500] hover:bg-[#e07700] text-white rounded-xl text-[13px] font-bold shadow-lg shadow-[#FB8500]/20 transition-all active:scale-95">
+          <button onClick={() => setViewMode('form')} className="flex items-center gap-2 px-4 py-2.5 bg-[#FCD526] hover:bg-[#e3be22] text-white rounded-xl text-[13px] font-bold shadow-lg shadow-[#FCD526]/20 transition-all active:scale-95">
             <Plus size={16} weight="bold" /> Tambah Mapel
           </button>
         </div>
@@ -54,7 +54,7 @@ export default function DataMataPelajaran() {
                 <ArrowLeft size={20} weight="bold" />
               </button>
               <div>
-                <h2 className="text-lg font-black text-[#023047] dark:text-white">Tambah Mata Pelajaran</h2>
+                <h2 className="text-lg font-black text-[#000052] dark:text-white">Tambah Mata Pelajaran</h2>
                 <p className="text-[13px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Lengkapi form di bawah untuk mendaftarkan mapel baru</p>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function DataMataPelajaran() {
                   Batal
                 </button>
                 <button 
-                  className="px-6 py-3 rounded-xl font-bold text-[13.5px] bg-[#FB8500] hover:bg-[#e07700] text-white shadow-lg shadow-[#FB8500]/20 flex items-center gap-2 transition-transform active:scale-95"
+                  className="px-6 py-3 rounded-xl font-bold text-[13.5px] bg-[#FCD526] hover:bg-[#e3be22] text-white shadow-lg shadow-[#FCD526]/20 flex items-center gap-2 transition-transform active:scale-95"
                 >
                   <FloppyDisk size={18} weight="fill" />
                   Simpan Mata Pelajaran
@@ -175,7 +175,7 @@ export default function DataMataPelajaran() {
                     <span className="font-medium text-slate-500 dark:text-slate-400 text-[13px]">{row.kelas}</span>
                   </td>
                   <td className="px-6 py-4 text-center whitespace-nowrap">
-                    <span className="font-black text-[#023047] dark:text-white text-[14px]">{row.kkm}</span>
+                    <span className="font-black text-[#000052] dark:text-white text-[14px]">{row.kkm}</span>
                   </td>
                   <td className="px-6 py-4 text-center whitespace-nowrap">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400 font-bold text-[11px] border border-emerald-100 dark:border-emerald-500/20 tracking-wide">
@@ -202,16 +202,16 @@ export default function DataMataPelajaran() {
         <div className="px-6 py-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
           <span className="text-[12.5px] font-medium text-slate-500 dark:text-slate-400">Menampilkan 1 sampai 6 dari 45 mapel</span>
           <div className="flex items-center gap-2">
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-400 hover:text-[#023047] hover:border-slate-300 disabled:opacity-50 shadow-sm">
+            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-400 hover:text-[#000052] hover:border-slate-300 disabled:opacity-50 shadow-sm">
               <CaretLeft size={16} weight="bold" />
             </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#023047] bg-[#023047] text-white font-bold text-[13px] shadow-sm">
+            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-[#000052] bg-[#000052] text-white font-bold text-[13px] shadow-sm">
               1
             </button>
             <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-[13px] hover:bg-slate-50 shadow-sm">
               2
             </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-400 hover:text-[#023047] hover:border-slate-300 shadow-sm">
+            <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-400 hover:text-[#000052] hover:border-slate-300 shadow-sm">
               <CaretRight size={16} weight="bold" />
             </button>
           </div>

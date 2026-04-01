@@ -95,7 +95,7 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
     return (
       <div className="space-y-1">
         <span className="text-[11px] text-slate-400 dark:text-slate-500 font-bold tracking-widest uppercase break-words">{label}</span>
-        <p className="text-[14px] font-extrabold text-[#023047] dark:text-white">{formData[name] || '-'}</p>
+        <p className="text-[14px] font-extrabold text-[#000052] dark:text-white">{formData[name] || '-'}</p>
       </div>
     );
   };
@@ -115,7 +115,7 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
     <div className="animate-fade-in-right pb-10 w-full">
       {/* Top Banner and Navigation */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-        <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-[#FB8500] font-bold transition-all hover:-translate-x-1">
+        <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-[#FCD526] font-bold transition-all hover:-translate-x-1">
           <ArrowLeft size={18} weight="bold" />
           <span className="text-[13.5px]">Kembali ke Daftar Pendaftar</span>
         </button>
@@ -137,7 +137,7 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
                 <span className="hidden sm:inline">Cetak Bukti Daftar</span>
               </button>
               {isFormTabActive && (
-                <button onClick={() => setIsEditing(true)} className="px-5 py-2.5 bg-[#FB8500] text-white rounded-xl hover:bg-[#e07700] flex items-center gap-2 font-bold shadow-lg shadow-[#FB8500]/20 transition-transform active:scale-95">
+                <button onClick={() => setIsEditing(true)} className="px-5 py-2.5 bg-[#FCD526] text-white rounded-xl hover:bg-[#e3be22] flex items-center gap-2 font-bold shadow-lg shadow-[#FCD526]/20 transition-transform active:scale-95">
                   <PencilSimple size={18} weight="fill" /> Edit Formulir
                 </button>
               )}
@@ -151,7 +151,7 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
         {/* Left Column: Profile Card */}
         <div className="xl:col-span-1 space-y-8">
           <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex flex-col items-center relative overflow-hidden sticky top-24">
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-[#023047] to-[#011c29]"></div>
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-[#000052] to-[#000020]"></div>
             
             <div className="relative mt-6 mb-5 group">
               <div className={`w-28 h-28 rounded-2xl bg-gradient-to-tr ${pendaftar?.initialBg || 'from-blue-500 to-indigo-500'} flex items-center justify-center text-4xl font-extrabold text-white shadow-xl shadow-blue-500/30 border-4 border-white dark:border-bg-cardDark z-10 transition-transform group-hover:scale-105 duration-300`}>
@@ -159,7 +159,7 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
               </div>
             </div>
             
-            <h2 className="text-xl font-black text-[#023047] dark:text-white text-center pb-0.5">{formData.namaDepanSantri} {formData.namaBelakangSantri}</h2>
+            <h2 className="text-xl font-black text-[#000052] dark:text-white text-center pb-0.5">{formData.namaDepanSantri} {formData.namaBelakangSantri}</h2>
             <p className="text-slate-500 font-bold text-[13px] mt-1 text-center bg-slate-100 dark:bg-slate-800/50 px-3 py-1 rounded-md tracking-wider">REG: {formData.idReg}</p>
             
             <div className={`mt-6 inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-black text-[11.5px] border tracking-widest shadow-sm ${getStatusBadge(formData.status)}`}>
@@ -175,7 +175,7 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
             <div className="w-full space-y-5">
               <div className="flex items-center justify-between text-[13.5px]">
                 <span className="text-slate-400 font-bold">Jalur Masuk</span>
-                <span className="text-[#023047] dark:text-white font-black">{formData.gelombang}</span>
+                <span className="text-[#000052] dark:text-white font-black">{formData.gelombang}</span>
               </div>
               <div className="flex items-center justify-between text-[13.5px]">
                 <span className="text-slate-400 font-bold">Program</span>
@@ -183,7 +183,7 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
               </div>
               <div className="flex items-center justify-between text-[13.5px]">
                 <span className="text-slate-400 font-bold">Tgl Daftar</span>
-                <span className="text-[#023047] dark:text-white font-black">{pendaftar?.tanggal || '12 Mei 2024'}</span>
+                <span className="text-[#000052] dark:text-white font-black">{pendaftar?.tanggal || '12 Mei 2024'}</span>
               </div>
             </div>
           </div>
@@ -196,28 +196,28 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
           <div className="flex flex-wrap items-center justify-start p-1.5 bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-2xl border border-slate-200/60 dark:border-slate-800 shadow-[0_4px_20px_rgb(0,0,0,0.02)] w-max max-w-full overflow-x-auto custom-scrollbar">
             <button 
               onClick={() => { setActiveTab('pribadi'); setIsEditing(false); }}
-              className={`px-6 py-3 rounded-xl font-bold text-[13px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'pribadi' ? 'bg-[#023047] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+              className={`px-6 py-3 rounded-xl font-bold text-[13px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'pribadi' ? 'bg-[#000052] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
             >
               <UserCircle size={18} weight={activeTab === 'pribadi' ? "fill" : "bold"} />
               Form Pribadi & Wali
             </button>
             <button 
               onClick={() => { setActiveTab('pendidikan'); setIsEditing(false); }}
-              className={`px-6 py-3 rounded-xl font-bold text-[13px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'pendidikan' ? 'bg-[#023047] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+              className={`px-6 py-3 rounded-xl font-bold text-[13px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'pendidikan' ? 'bg-[#000052] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
             >
               <Buildings size={18} weight={activeTab === 'pendidikan' ? "fill" : "bold"} />
               Form Pendidikan
             </button>
             <button 
               onClick={() => { setActiveTab('berkas'); setIsEditing(false); }}
-              className={`px-6 py-3 rounded-xl font-bold text-[13px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'berkas' ? 'bg-[#023047] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+              className={`px-6 py-3 rounded-xl font-bold text-[13px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'berkas' ? 'bg-[#000052] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
             >
               <FileText size={18} weight={activeTab === 'berkas' ? "fill" : "bold"} />
               Pemberkasan
             </button>
             <button 
               onClick={() => { setActiveTab('seleksi'); setIsEditing(false); }}
-              className={`px-6 py-3 rounded-xl font-bold text-[13px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'seleksi' ? 'bg-[#023047] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+              className={`px-6 py-3 rounded-xl font-bold text-[13px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'seleksi' ? 'bg-[#000052] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
             >
               <ShieldCheck size={18} weight={activeTab === 'seleksi' ? "fill" : "bold"} />
               Kelulusan
@@ -230,10 +230,10 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
               
               {/* Card: Santri */}
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                {isEditing && <div className="absolute top-0 left-0 w-1 h-full bg-[#FB8500]"></div>}
+                {isEditing && <div className="absolute top-0 left-0 w-1 h-full bg-[#FCD526]"></div>}
                 
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
-                  <UserCircle size={22} weight="fill" className={isEditing ? "text-[#FB8500]" : "text-blue-500"} />
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                  <UserCircle size={22} weight="fill" className={isEditing ? "text-[#FCD526]" : "text-blue-500"} />
                   Data Diri Pendaftar
                 </h3>
                 
@@ -251,10 +251,10 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
 
                {/* Card: Wali */}
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                {isEditing && <div className="absolute top-0 left-0 w-1 h-full bg-[#FB8500]"></div>}
+                {isEditing && <div className="absolute top-0 left-0 w-1 h-full bg-[#FCD526]"></div>}
                 
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
-                  <Fingerprint size={22} weight="fill" className={isEditing ? "text-[#FB8500]" : "text-emerald-500"} />
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                  <Fingerprint size={22} weight="fill" className={isEditing ? "text-[#FCD526]" : "text-emerald-500"} />
                   Data Wali
                 </h3>
                 
@@ -283,9 +283,9 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
             <div className="space-y-6 animate-fade-in-up">
               
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                {isEditing && <div className="absolute top-0 left-0 w-1 h-full bg-[#FB8500]"></div>}
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
-                  <Buildings size={22} weight="fill" className={isEditing ? "text-[#FB8500]" : "text-purple-500"} />
+                {isEditing && <div className="absolute top-0 left-0 w-1 h-full bg-[#FCD526]"></div>}
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                  <Buildings size={22} weight="fill" className={isEditing ? "text-[#FCD526]" : "text-purple-500"} />
                   Pendidikan Formal
                 </h3>
                 
@@ -301,9 +301,9 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
               </div>
 
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                {isEditing && <div className="absolute top-0 left-0 w-1 h-full bg-[#FB8500]"></div>}
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
-                  <BookOpen size={22} weight="fill" className={isEditing ? "text-[#FB8500]" : "text-teal-500"} />
+                {isEditing && <div className="absolute top-0 left-0 w-1 h-full bg-[#FCD526]"></div>}
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                  <BookOpen size={22} weight="fill" className={isEditing ? "text-[#FCD526]" : "text-teal-500"} />
                   Pendidikan Madrasah
                 </h3>
                 
@@ -326,7 +326,7 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
             <div className="space-y-6 animate-fade-in-up">
               
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
                   <FileText size={22} weight="fill" className="text-orange-500" />
                   Daftar Kelengkapan Dokumen Fisik
                 </h3>
@@ -381,7 +381,7 @@ export default function DetailSantriBaru({ pendaftar, onBack }) {
             <div className="space-y-6 animate-fade-in-up">
               
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
                   <ShieldCheck size={22} weight="fill" className="text-purple-500" />
                   Jadwal & Hasil Ujian Seleksi
                 </h3>

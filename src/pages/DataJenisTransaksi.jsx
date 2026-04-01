@@ -28,10 +28,10 @@ export default function DataJenisTransaksi() {
       {/* Header & Main Actions */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8 text-left">
         <div>
-          <h2 className="text-2xl font-extrabold text-[#023047] dark:text-white tracking-tight">Jenis Transaksi</h2>
+          <h2 className="text-2xl font-extrabold text-[#000052] dark:text-white tracking-tight">Jenis Transaksi</h2>
           <p className="text-[13.5px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Kelola kategori dan Master Date untuk tipe transaksi finansial internal pesantren.</p>
         </div>
-        <button className="flex items-center justify-center gap-2 bg-[#FB8500] hover:bg-[#e07700] text-white px-5 py-3 rounded-xl font-bold shadow-lg shadow-[#FB8500]/30 transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm">
+        <button className="flex items-center justify-center gap-2 bg-[#FCD526] hover:bg-[#e3be22] text-white px-5 py-3 rounded-xl font-bold shadow-lg shadow-[#FCD526]/30 transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm">
           <Plus size={18} weight="bold" />
           <span className="text-[14px]">Tambah Kategori</span>
         </button>
@@ -91,7 +91,7 @@ export default function DataJenisTransaksi() {
                     
                     {/* Kode */}
                     <td className="px-8 py-4">
-                      <span className="font-extrabold font-mono text-[#023047] dark:text-slate-200 text-[13.5px] px-2.5 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg">{row.id}</span>
+                      <span className="font-extrabold font-mono text-[#000052] dark:text-slate-200 text-[13.5px] px-2.5 py-1 bg-slate-100 dark:bg-slate-800 rounded-lg">{row.id}</span>
                     </td>
 
                     {/* Nama */}
@@ -133,7 +133,7 @@ export default function DataJenisTransaksi() {
                     {/* Aksi */}
                     <td className="px-8 py-4">
                       <div className="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#FB8500] hover:bg-orange-50 hover:border-orange-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Edit Data">
+                        <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#FCD526] hover:bg-orange-50 hover:border-orange-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Edit Data">
                           <PencilSimple size={16} weight="regular" />
                         </button>
                         <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-red-600 hover:bg-red-50 hover:border-red-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Hapus Data">

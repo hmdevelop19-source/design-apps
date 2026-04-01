@@ -1,0 +1,1769 @@
+
+> desaign-baru@0.0.0 lint
+> eslint .
+
+
+/Users/user/Desktop/Desaign Baru/src/App.jsx
+  29:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  27 |     // Check system preference on load
+  28 |     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+> 29 |       setIsDark(true);
+     |       ^^^^^^^^^ Avoid calling setState() directly within an effect
+  30 |       document.body.classList.add('dark');
+  31 |     }
+  32 |   }, []);  react-hooks/set-state-in-effect
+
+/Users/user/Desktop/Desaign Baru/src/components/ChartCards.jsx
+  105:39  error  'isDark' is defined but never used  no-unused-vars
+
+/Users/user/Desktop/Desaign Baru/src/components/StatCard.jsx
+  3:50  error  'desc' is defined but never used  no-unused-vars
+  3:62  error  'Icon' is defined but never used  no-unused-vars
+
+/Users/user/Desktop/Desaign Baru/src/pages/DataJenisTransaksi.jsx
+  10:9  warning  The 'tableData' array makes the dependencies of useMemo Hook (at line 24) change on every render. Move it inside the useMemo callback. Alternatively, wrap the initialization of 'tableData' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+/Users/user/Desktop/Desaign Baru/src/pages/DataRekening.jsx
+  10:9  warning  The 'tableData' array makes the dependencies of useMemo Hook (at line 24) change on every render. Move it inside the useMemo callback. Alternatively, wrap the initialization of 'tableData' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+/Users/user/Desktop/Desaign Baru/src/pages/DataSantri.jsx
+  10:9  warning  The 'tableData' array makes the dependencies of useMemo Hook (at line 23) change on every render. Move it inside the useMemo callback. Alternatively, wrap the initialization of 'tableData' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+/Users/user/Desktop/Desaign Baru/src/pages/DataStaf.jsx
+  10:9  warning  The 'tableData' array makes the dependencies of useMemo Hook (at line 25) change on every render. Move it inside the useMemo callback. Alternatively, wrap the initialization of 'tableData' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+/Users/user/Desktop/Desaign Baru/src/pages/DataTransaksi.jsx
+  10:9  warning  The 'tableData' array makes the dependencies of useMemo Hook (at line 24) change on every render. Move it inside the useMemo callback. Alternatively, wrap the initialization of 'tableData' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+/Users/user/Desktop/Desaign Baru/src/pages/DataWaliSantri.jsx
+  10:9  warning  The 'tableData' array makes the dependencies of useMemo Hook (at line 24) change on every render. Move it inside the useMemo callback. Alternatively, wrap the initialization of 'tableData' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+/Users/user/Desktop/Desaign Baru/src/pages/DetailSantri.jsx
+  216:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  214 |                 
+  215 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+> 216 |                   <InputField label="Nama Depan" name="namaDepanSantri" />
+      |                    ^^^^^^^^^^ This component is created during render
+  217 |                   <InputField label="Nama Belakang" name="namaBelakangSantri" />
+  218 |                   <InputField label="NIK Santri" name="nikSantri" type="number" />
+  219 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                                                                     react-hooks/static-components
+  217:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  215 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+  216 |                   <InputField label="Nama Depan" name="namaDepanSantri" />
+> 217 |                   <InputField label="Nama Belakang" name="namaBelakangSantri" />
+      |                    ^^^^^^^^^^ This component is created during render
+  218 |                   <InputField label="NIK Santri" name="nikSantri" type="number" />
+  219 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+  220 |                   <div className="grid grid-cols-2 gap-4">
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                           react-hooks/static-components
+  218:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  216 |                   <InputField label="Nama Depan" name="namaDepanSantri" />
+  217 |                   <InputField label="Nama Belakang" name="namaBelakangSantri" />
+> 218 |                   <InputField label="NIK Santri" name="nikSantri" type="number" />
+      |                    ^^^^^^^^^^ This component is created during render
+  219 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+  220 |                   <div className="grid grid-cols-2 gap-4">
+  221 |                     <InputField label="Tempat Lahir" name="tempatLahir" />
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                                   react-hooks/static-components
+  219:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  217 |                   <InputField label="Nama Belakang" name="namaBelakangSantri" />
+  218 |                   <InputField label="NIK Santri" name="nikSantri" type="number" />
+> 219 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  220 |                   <div className="grid grid-cols-2 gap-4">
+  221 |                     <InputField label="Tempat Lahir" name="tempatLahir" />
+  222 |                     <InputField label="Tanggal Lahir" name="tanggalLahir" type="date" />
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                     react-hooks/static-components
+  221:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  219 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+  220 |                   <div className="grid grid-cols-2 gap-4">
+> 221 |                     <InputField label="Tempat Lahir" name="tempatLahir" />
+      |                      ^^^^^^^^^^ This component is created during render
+  222 |                     <InputField label="Tanggal Lahir" name="tanggalLahir" type="date" />
+  223 |                   </div>
+  224 |                   <InputField label="Desa / Kelurahan" name="desaKelurahan" />
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                                                                               react-hooks/static-components
+  222:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  220 |                   <div className="grid grid-cols-2 gap-4">
+  221 |                     <InputField label="Tempat Lahir" name="tempatLahir" />
+> 222 |                     <InputField label="Tanggal Lahir" name="tanggalLahir" type="date" />
+      |                      ^^^^^^^^^^ This component is created during render
+  223 |                   </div>
+  224 |                   <InputField label="Desa / Kelurahan" name="desaKelurahan" />
+  225 |                   <div className="md:col-span-2">
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                                                                                                                                         react-hooks/static-components
+  224:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  222 |                     <InputField label="Tanggal Lahir" name="tanggalLahir" type="date" />
+  223 |                   </div>
+> 224 |                   <InputField label="Desa / Kelurahan" name="desaKelurahan" />
+      |                    ^^^^^^^^^^ This component is created during render
+  225 |                   <div className="md:col-span-2">
+  226 |                     <InputField label="Alamat Lengkap" name="alamatSantri" />
+  227 |                   </div>
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                                                                                                                                                                          react-hooks/static-components
+  226:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  224 |                   <InputField label="Desa / Kelurahan" name="desaKelurahan" />
+  225 |                   <div className="md:col-span-2">
+> 226 |                     <InputField label="Alamat Lengkap" name="alamatSantri" />
+      |                      ^^^^^^^^^^ This component is created during render
+  227 |                   </div>
+  228 |                 </div>
+  229 |               </div>
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/static-components
+  241:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  239 |                 
+  240 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+> 241 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+      |                    ^^^^^^^^^^ This component is created during render
+  242 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+  243 |                   <div className="md:col-span-2">
+  244 |                     <InputField label="Nomor WhatsApp / Telepon" name="phoneWali" type="tel" />
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                                                                                                            react-hooks/static-components
+  242:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  240 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+  241 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+> 242 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+      |                    ^^^^^^^^^^ This component is created during render
+  243 |                   <div className="md:col-span-2">
+  244 |                     <InputField label="Nomor WhatsApp / Telepon" name="phoneWali" type="tel" />
+  245 |                   </div>
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                                                                                                    react-hooks/static-components
+  244:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  242 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+  243 |                   <div className="md:col-span-2">
+> 244 |                     <InputField label="Nomor WhatsApp / Telepon" name="phoneWali" type="tel" />
+      |                      ^^^^^^^^^^ This component is created during render
+  245 |                   </div>
+  246 |                 </div>
+  247 |               </div>
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                                                                                                                                                                                                                       react-hooks/static-components
+  269:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  267 |                     <span className="text-[12px] font-bold text-slate-400">Pendidikan Formal (Internal)</span>
+  268 |                   </div>
+> 269 |                   <InputField label="Instansi Formal" name="sekolahAsal" options={['SMP Darussalam', 'MTs Darussalam', 'SMA Darussalam', 'MA Darussalam', 'SMK Darussalam']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  270 |                   <InputField label="Kelas Saat Ini" name="jenjangFormal" options={['Kelas 7', 'Kelas 8', 'Kelas 9', 'Kelas 10', 'Kelas 11', 'Kelas 12']} />
+  271 |                   <InputField label="Status Siswa" name="statusSiswaFormal" options={['Aktif', 'Lulus', 'Pindah', 'Berhenti']} />
+  272 |                   <InputField label="Tahun Masuk" name="tahunMasukFormal" type="number" />
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |  react-hooks/static-components
+  270:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  268 |                   </div>
+  269 |                   <InputField label="Instansi Formal" name="sekolahAsal" options={['SMP Darussalam', 'MTs Darussalam', 'SMA Darussalam', 'MA Darussalam', 'SMK Darussalam']} />
+> 270 |                   <InputField label="Kelas Saat Ini" name="jenjangFormal" options={['Kelas 7', 'Kelas 8', 'Kelas 9', 'Kelas 10', 'Kelas 11', 'Kelas 12']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  271 |                   <InputField label="Status Siswa" name="statusSiswaFormal" options={['Aktif', 'Lulus', 'Pindah', 'Berhenti']} />
+  272 |                   <InputField label="Tahun Masuk" name="tahunMasukFormal" type="number" />
+  273 |
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                 react-hooks/static-components
+  271:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  269 |                   <InputField label="Instansi Formal" name="sekolahAsal" options={['SMP Darussalam', 'MTs Darussalam', 'SMA Darussalam', 'MA Darussalam', 'SMK Darussalam']} />
+  270 |                   <InputField label="Kelas Saat Ini" name="jenjangFormal" options={['Kelas 7', 'Kelas 8', 'Kelas 9', 'Kelas 10', 'Kelas 11', 'Kelas 12']} />
+> 271 |                   <InputField label="Status Siswa" name="statusSiswaFormal" options={['Aktif', 'Lulus', 'Pindah', 'Berhenti']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  272 |                   <InputField label="Tahun Masuk" name="tahunMasukFormal" type="number" />
+  273 |
+  274 |                   <div className="md:col-span-2 mt-4 mb-2 pb-2 border-b border-slate-100 dark:border-slate-800">
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                         react-hooks/static-components
+  272:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  270 |                   <InputField label="Kelas Saat Ini" name="jenjangFormal" options={['Kelas 7', 'Kelas 8', 'Kelas 9', 'Kelas 10', 'Kelas 11', 'Kelas 12']} />
+  271 |                   <InputField label="Status Siswa" name="statusSiswaFormal" options={['Aktif', 'Lulus', 'Pindah', 'Berhenti']} />
+> 272 |                   <InputField label="Tahun Masuk" name="tahunMasukFormal" type="number" />
+      |                    ^^^^^^^^^^ This component is created during render
+  273 |
+  274 |                   <div className="md:col-span-2 mt-4 mb-2 pb-2 border-b border-slate-100 dark:border-slate-800">
+  275 |                     <span className="text-[12px] font-bold text-slate-400">Pendidikan Madrasah (Internal)</span>
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                        react-hooks/static-components
+  277:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  275 |                     <span className="text-[12px] font-bold text-slate-400">Pendidikan Madrasah (Internal)</span>
+  276 |                   </div>
+> 277 |                   <InputField label="Tingkatan Madrasah" name="jenjangMadrasah" options={['Madrasah Diniyah Ula', 'Madrasah Diniyah Wustha', 'Madrasah Diniyah Ulya']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  278 |                   <InputField label="Kelas / Jilid" name="kelasMadrasah" />
+  279 |                   <InputField label="Program Ekstra" name="program" options={['Kajian Kitab Kuning', 'Tahfidz Al-Quran', 'Program Bahasa Terpadu']} />
+  280 |                   <InputField label="Capaian Hafalan" name="capaianHafalan" />
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                              react-hooks/static-components
+  278:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  276 |                   </div>
+  277 |                   <InputField label="Tingkatan Madrasah" name="jenjangMadrasah" options={['Madrasah Diniyah Ula', 'Madrasah Diniyah Wustha', 'Madrasah Diniyah Ulya']} />
+> 278 |                   <InputField label="Kelas / Jilid" name="kelasMadrasah" />
+      |                    ^^^^^^^^^^ This component is created during render
+  279 |                   <InputField label="Program Ekstra" name="program" options={['Kajian Kitab Kuning', 'Tahfidz Al-Quran', 'Program Bahasa Terpadu']} />
+  280 |                   <InputField label="Capaian Hafalan" name="capaianHafalan" />
+  281 |                 </div>
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                        react-hooks/static-components
+  279:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  277 |                   <InputField label="Tingkatan Madrasah" name="jenjangMadrasah" options={['Madrasah Diniyah Ula', 'Madrasah Diniyah Wustha', 'Madrasah Diniyah Ulya']} />
+  278 |                   <InputField label="Kelas / Jilid" name="kelasMadrasah" />
+> 279 |                   <InputField label="Program Ekstra" name="program" options={['Kajian Kitab Kuning', 'Tahfidz Al-Quran', 'Program Bahasa Terpadu']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  280 |                   <InputField label="Capaian Hafalan" name="capaianHafalan" />
+  281 |                 </div>
+  282 |               </div>
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                            react-hooks/static-components
+  280:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  278 |                   <InputField label="Kelas / Jilid" name="kelasMadrasah" />
+  279 |                   <InputField label="Program Ekstra" name="program" options={['Kajian Kitab Kuning', 'Tahfidz Al-Quran', 'Program Bahasa Terpadu']} />
+> 280 |                   <InputField label="Capaian Hafalan" name="capaianHafalan" />
+      |                    ^^^^^^^^^^ This component is created during render
+  281 |                 </div>
+  282 |               </div>
+  283 |
+
+  53 |   };
+  54 |
+> 55 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 56 |     // Only allow editing if we are in the 'biodata' tab and edit is turned on
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     // Or if we want to edit akademik tab... wait, the user previously wanted edit for Biodata.
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 90 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |   };
+     | ^^^^ The component is created during render here
+  92 |
+  93 |   const isFormTabActive = activeTab === 'biodata' || activeTab === 'akademik';
+  94 |                                                                                                                                                                                                                                                                                                                                                      react-hooks/static-components
+
+/Users/user/Desktop/Desaign Baru/src/pages/DetailSantriBaru.jsx
+  241:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  239 |                 
+  240 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+> 241 |                   <InputField label="Nama Depan" name="namaDepanSantri" />
+      |                    ^^^^^^^^^^ This component is created during render
+  242 |                   <InputField label="Nama Belakang" name="namaBelakangSantri" />
+  243 |                   <InputField label="NIK Santri" name="nikSantri" type="number" />
+  244 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                                      react-hooks/static-components
+  242:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  240 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+  241 |                   <InputField label="Nama Depan" name="namaDepanSantri" />
+> 242 |                   <InputField label="Nama Belakang" name="namaBelakangSantri" />
+      |                    ^^^^^^^^^^ This component is created during render
+  243 |                   <InputField label="NIK Santri" name="nikSantri" type="number" />
+  244 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+  245 |                   <InputField label="Tempat Lahir" name="tempatLahir" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                              react-hooks/static-components
+  243:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  241 |                   <InputField label="Nama Depan" name="namaDepanSantri" />
+  242 |                   <InputField label="Nama Belakang" name="namaBelakangSantri" />
+> 243 |                   <InputField label="NIK Santri" name="nikSantri" type="number" />
+      |                    ^^^^^^^^^^ This component is created during render
+  244 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+  245 |                   <InputField label="Tempat Lahir" name="tempatLahir" />
+  246 |                   <InputField label="Tanggal Lahir" name="tanggalLahir" type="date" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                          react-hooks/static-components
+  244:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  242 |                   <InputField label="Nama Belakang" name="namaBelakangSantri" />
+  243 |                   <InputField label="NIK Santri" name="nikSantri" type="number" />
+> 244 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  245 |                   <InputField label="Tempat Lahir" name="tempatLahir" />
+  246 |                   <InputField label="Tanggal Lahir" name="tanggalLahir" type="date" />
+  247 |                   <InputField label="Desa / Kelurahan" name="desaKelurahan" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                      react-hooks/static-components
+  245:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  243 |                   <InputField label="NIK Santri" name="nikSantri" type="number" />
+  244 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+> 245 |                   <InputField label="Tempat Lahir" name="tempatLahir" />
+      |                    ^^^^^^^^^^ This component is created during render
+  246 |                   <InputField label="Tanggal Lahir" name="tanggalLahir" type="date" />
+  247 |                   <InputField label="Desa / Kelurahan" name="desaKelurahan" />
+  248 |                   <InputField label="Alamat Lengkap Santri" name="alamatSantri" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                    react-hooks/static-components
+  246:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  244 |                   <InputField label="Jenis Kelamin" name="jkSantri" options={['Laki-laki', 'Perempuan']} />
+  245 |                   <InputField label="Tempat Lahir" name="tempatLahir" />
+> 246 |                   <InputField label="Tanggal Lahir" name="tanggalLahir" type="date" />
+      |                    ^^^^^^^^^^ This component is created during render
+  247 |                   <InputField label="Desa / Kelurahan" name="desaKelurahan" />
+  248 |                   <InputField label="Alamat Lengkap Santri" name="alamatSantri" />
+  249 |                 </div>
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                                react-hooks/static-components
+  247:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  245 |                   <InputField label="Tempat Lahir" name="tempatLahir" />
+  246 |                   <InputField label="Tanggal Lahir" name="tanggalLahir" type="date" />
+> 247 |                   <InputField label="Desa / Kelurahan" name="desaKelurahan" />
+      |                    ^^^^^^^^^^ This component is created during render
+  248 |                   <InputField label="Alamat Lengkap Santri" name="alamatSantri" />
+  249 |                 </div>
+  250 |               </div>
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                                                                                                                       react-hooks/static-components
+  248:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  246 |                   <InputField label="Tanggal Lahir" name="tanggalLahir" type="date" />
+  247 |                   <InputField label="Desa / Kelurahan" name="desaKelurahan" />
+> 248 |                   <InputField label="Alamat Lengkap Santri" name="alamatSantri" />
+      |                    ^^^^^^^^^^ This component is created during render
+  249 |                 </div>
+  250 |               </div>
+  251 |
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                                                                                                                                                                                                react-hooks/static-components
+  262:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  260 |                 
+  261 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+> 262 |                   <InputField label="NIK Wali" name="nikWali" type="number" />
+      |                    ^^^^^^^^^^ This component is created during render
+  263 |                   <InputField label="Nomor KK" name="noKk" type="number" />
+  264 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+  265 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                                                                    react-hooks/static-components
+  263:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  261 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+  262 |                   <InputField label="NIK Wali" name="nikWali" type="number" />
+> 263 |                   <InputField label="Nomor KK" name="noKk" type="number" />
+      |                    ^^^^^^^^^^ This component is created during render
+  264 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+  265 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+  266 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                           react-hooks/static-components
+  264:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  262 |                   <InputField label="NIK Wali" name="nikWali" type="number" />
+  263 |                   <InputField label="Nomor KK" name="noKk" type="number" />
+> 264 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+      |                    ^^^^^^^^^^ This component is created during render
+  265 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+  266 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+  267 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                        react-hooks/static-components
+  265:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  263 |                   <InputField label="Nomor KK" name="noKk" type="number" />
+  264 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+> 265 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+      |                    ^^^^^^^^^^ This component is created during render
+  266 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+  267 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+  268 |                   <InputField label="Pekerjaan Wali" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                       react-hooks/static-components
+  266:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  264 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+  265 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+> 266 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  267 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+  268 |                   <InputField label="Pekerjaan Wali" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+  269 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {       react-hooks/static-components
+  267:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  265 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+  266 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+> 267 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  268 |                   <InputField label="Pekerjaan Wali" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+  269 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+  270 |                   <InputField label="Nomor Telepon" name="phoneWali" type="tel" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {  react-hooks/static-components
+  268:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  266 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+  267 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+> 268 |                   <InputField label="Pekerjaan Wali" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  269 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+  270 |                   <InputField label="Nomor Telepon" name="phoneWali" type="tel" />
+  271 |                   <InputField label="Email Aktif" name="emailWali" type="email" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {   react-hooks/static-components
+  269:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  267 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+  268 |                   <InputField label="Pekerjaan Wali" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+> 269 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  270 |                   <InputField label="Nomor Telepon" name="phoneWali" type="tel" />
+  271 |                   <InputField label="Email Aktif" name="emailWali" type="email" />
+  272 |                   <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {          react-hooks/static-components
+  270:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  268 |                   <InputField label="Pekerjaan Wali" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+  269 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+> 270 |                   <InputField label="Nomor Telepon" name="phoneWali" type="tel" />
+      |                    ^^^^^^^^^^ This component is created during render
+  271 |                   <InputField label="Email Aktif" name="emailWali" type="email" />
+  272 |                   <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+  273 |                     <InputField label="Alamat Sesuai KTP" name="alamatKtpWali" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                              react-hooks/static-components
+  271:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  269 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+  270 |                   <InputField label="Nomor Telepon" name="phoneWali" type="tel" />
+> 271 |                   <InputField label="Email Aktif" name="emailWali" type="email" />
+      |                    ^^^^^^^^^^ This component is created during render
+  272 |                   <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+  273 |                     <InputField label="Alamat Sesuai KTP" name="alamatKtpWali" />
+  274 |                     <InputField label="Alamat Domisili" name="alamatDomisiliWali" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                         react-hooks/static-components
+  273:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  271 |                   <InputField label="Email Aktif" name="emailWali" type="email" />
+  272 |                   <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+> 273 |                     <InputField label="Alamat Sesuai KTP" name="alamatKtpWali" />
+      |                      ^^^^^^^^^^ This component is created during render
+  274 |                     <InputField label="Alamat Domisili" name="alamatDomisiliWali" />
+  275 |                   </div>
+  276 |                 </div>
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                                                                                      react-hooks/static-components
+  274:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  272 |                   <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+  273 |                     <InputField label="Alamat Sesuai KTP" name="alamatKtpWali" />
+> 274 |                     <InputField label="Alamat Domisili" name="alamatDomisiliWali" />
+      |                      ^^^^^^^^^^ This component is created during render
+  275 |                   </div>
+  276 |                 </div>
+  277 |               </div>
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                                                                                                                                                    react-hooks/static-components
+  293:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  291 |                 
+  292 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+> 293 |                   <InputField label="NISN" name="nisn" type="number" />
+      |                    ^^^^^^^^^^ This component is created during render
+  294 |                   <InputField label="Nomor Ijazah Formal" name="noIjazahFormal" />
+  295 |                   <InputField label="Nama Sekolah Asal" name="asalSekolah" />
+  296 |                   <InputField label="Jenjang Pendidikan Formal" name="jenjangFormal" options={['SD', 'MI', 'SMP', 'MTs', 'SMA']} />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                    react-hooks/static-components
+  294:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  292 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+  293 |                   <InputField label="NISN" name="nisn" type="number" />
+> 294 |                   <InputField label="Nomor Ijazah Formal" name="noIjazahFormal" />
+      |                    ^^^^^^^^^^ This component is created during render
+  295 |                   <InputField label="Nama Sekolah Asal" name="asalSekolah" />
+  296 |                   <InputField label="Jenjang Pendidikan Formal" name="jenjangFormal" options={['SD', 'MI', 'SMP', 'MTs', 'SMA']} />
+  297 |                   <div className="md:col-span-2">
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                   react-hooks/static-components
+  295:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  293 |                   <InputField label="NISN" name="nisn" type="number" />
+  294 |                   <InputField label="Nomor Ijazah Formal" name="noIjazahFormal" />
+> 295 |                   <InputField label="Nama Sekolah Asal" name="asalSekolah" />
+      |                    ^^^^^^^^^^ This component is created during render
+  296 |                   <InputField label="Jenjang Pendidikan Formal" name="jenjangFormal" options={['SD', 'MI', 'SMP', 'MTs', 'SMA']} />
+  297 |                   <div className="md:col-span-2">
+  298 |                     <InputField label="Alamat Sekolah Asal" name="alamatSekolahFormal" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                            react-hooks/static-components
+  296:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  294 |                   <InputField label="Nomor Ijazah Formal" name="noIjazahFormal" />
+  295 |                   <InputField label="Nama Sekolah Asal" name="asalSekolah" />
+> 296 |                   <InputField label="Jenjang Pendidikan Formal" name="jenjangFormal" options={['SD', 'MI', 'SMP', 'MTs', 'SMA']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  297 |                   <div className="md:col-span-2">
+  298 |                     <InputField label="Alamat Sekolah Asal" name="alamatSekolahFormal" />
+  299 |                   </div>
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                           react-hooks/static-components
+  298:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  296 |                   <InputField label="Jenjang Pendidikan Formal" name="jenjangFormal" options={['SD', 'MI', 'SMP', 'MTs', 'SMA']} />
+  297 |                   <div className="md:col-span-2">
+> 298 |                     <InputField label="Alamat Sekolah Asal" name="alamatSekolahFormal" />
+      |                      ^^^^^^^^^^ This component is created during render
+  299 |                   </div>
+  300 |                 </div>
+  301 |               </div>
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                                                                                                                                              react-hooks/static-components
+  311:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  309 |                 
+  310 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+> 311 |                   <InputField label="Nama Madrasah Asal" name="namaMadrasah" />
+      |                    ^^^^^^^^^^ This component is created during render
+  312 |                   <InputField label="Jenjang Pendidikan Madrasah" name="jenjangMadrasah" options={['-', 'Madrasah Diniyah Awwaliyah (MDA)', 'Madrasah Diniyah Wustho (MDW)', 'Madrasah Diniyah Ulya (MDU)']} />
+  313 |                   <InputField label="Nomor Ijazah Madrasah" name="noIjazahMadrasah" />
+  314 |                   <InputField label="Program Pesantren Pilihan" name="program" options={['Tibyan', 'Tahfidz', 'Reguler']} />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                             react-hooks/static-components
+  312:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  310 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+  311 |                   <InputField label="Nama Madrasah Asal" name="namaMadrasah" />
+> 312 |                   <InputField label="Jenjang Pendidikan Madrasah" name="jenjangMadrasah" options={['-', 'Madrasah Diniyah Awwaliyah (MDA)', 'Madrasah Diniyah Wustho (MDW)', 'Madrasah Diniyah Ulya (MDU)']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  313 |                   <InputField label="Nomor Ijazah Madrasah" name="noIjazahMadrasah" />
+  314 |                   <InputField label="Program Pesantren Pilihan" name="program" options={['Tibyan', 'Tahfidz', 'Reguler']} />
+  315 |                   <div className="md:col-span-2">
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                            react-hooks/static-components
+  313:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  311 |                   <InputField label="Nama Madrasah Asal" name="namaMadrasah" />
+  312 |                   <InputField label="Jenjang Pendidikan Madrasah" name="jenjangMadrasah" options={['-', 'Madrasah Diniyah Awwaliyah (MDA)', 'Madrasah Diniyah Wustho (MDW)', 'Madrasah Diniyah Ulya (MDU)']} />
+> 313 |                   <InputField label="Nomor Ijazah Madrasah" name="noIjazahMadrasah" />
+      |                    ^^^^^^^^^^ This component is created during render
+  314 |                   <InputField label="Program Pesantren Pilihan" name="program" options={['Tibyan', 'Tahfidz', 'Reguler']} />
+  315 |                   <div className="md:col-span-2">
+  316 |                     <InputField label="Alamat Madrasah Asal" name="alamatMadrasah" />
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                         react-hooks/static-components
+  314:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  312 |                   <InputField label="Jenjang Pendidikan Madrasah" name="jenjangMadrasah" options={['-', 'Madrasah Diniyah Awwaliyah (MDA)', 'Madrasah Diniyah Wustho (MDW)', 'Madrasah Diniyah Ulya (MDU)']} />
+  313 |                   <InputField label="Nomor Ijazah Madrasah" name="noIjazahMadrasah" />
+> 314 |                   <InputField label="Program Pesantren Pilihan" name="program" options={['Tibyan', 'Tahfidz', 'Reguler']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  315 |                   <div className="md:col-span-2">
+  316 |                     <InputField label="Alamat Madrasah Asal" name="alamatMadrasah" />
+  317 |                   </div>
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                react-hooks/static-components
+  316:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  314 |                   <InputField label="Program Pesantren Pilihan" name="program" options={['Tibyan', 'Tahfidz', 'Reguler']} />
+  315 |                   <div className="md:col-span-2">
+> 316 |                     <InputField label="Alamat Madrasah Asal" name="alamatMadrasah" />
+      |                      ^^^^^^^^^^ This component is created during render
+  317 |                   </div>
+  318 |                 </div>
+  319 |               </div>
+
+   60 |   };
+   61 |
+>  62 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+      |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  63 |     // Determine target tab based on name roughly
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  64 |     const isTabPribadi = ['namaDepanSantri', 'namaBelakangSantri', 'nikSantri', 'jkSantri', 'tempatLahir', 'tanggalLahir', 'desaKelurahan', 'alamatSantri', 'nikWali', 'noKk', 'namaDepanWali', 'namaBelakangWali', 'jkWali', 'peran', 'pekerjaanWali', 'pendidikanWali', 'phoneWali', 'emailWali', 'alamatKtpWali', 'alamatDomisiliWali'].includes(name);
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 100 |     );
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   };
+      | ^^^^ The component is created during render here
+  102 |
+  103 |   const getStatusBadge = (status) => {
+  104 |     switch(status) {                                                                                                                                                                                                                                                                                                                                                         react-hooks/static-components
+
+/Users/user/Desktop/Desaign Baru/src/pages/DetailWaliSantri.jsx
+  185:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  183 |                 
+  184 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+> 185 |                   <InputField label="NIK Wali" name="nikWali" type="number" />
+      |                    ^^^^^^^^^^ This component is created during render
+  186 |                   <InputField label="Nomor Kartu Keluarga (KK)" name="noKk" type="number" />
+  187 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+  188 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |                                                                                                                                                                                                                                                            react-hooks/static-components
+  186:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  184 |                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-7">
+  185 |                   <InputField label="NIK Wali" name="nikWali" type="number" />
+> 186 |                   <InputField label="Nomor Kartu Keluarga (KK)" name="noKk" type="number" />
+      |                    ^^^^^^^^^^ This component is created during render
+  187 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+  188 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+  189 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |                                                                                                                                                                   react-hooks/static-components
+  187:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  185 |                   <InputField label="NIK Wali" name="nikWali" type="number" />
+  186 |                   <InputField label="Nomor Kartu Keluarga (KK)" name="noKk" type="number" />
+> 187 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+      |                    ^^^^^^^^^^ This component is created during render
+  188 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+  189 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+  190 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |                                                                                                                                                react-hooks/static-components
+  188:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  186 |                   <InputField label="Nomor Kartu Keluarga (KK)" name="noKk" type="number" />
+  187 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+> 188 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+      |                    ^^^^^^^^^^ This component is created during render
+  189 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+  190 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+  191 |                   <InputField label="Pekerjaan" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |                                                                                    react-hooks/static-components
+  189:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  187 |                   <InputField label="Nama Depan Wali" name="namaDepanWali" />
+  188 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+> 189 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  190 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+  191 |                   <InputField label="Pekerjaan" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+  192 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |                     react-hooks/static-components
+  190:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  188 |                   <InputField label="Nama Belakang Wali" name="namaBelakangWali" />
+  189 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+> 190 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  191 |                   <InputField label="Pekerjaan" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+  192 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+  193 |                   <InputField label="Nomor Telepon Pribadi" name="phoneWali" type="tel" />
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |        react-hooks/static-components
+  191:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  189 |                   <InputField label="Jenis Kelamin" name="jkWali" options={['Laki-laki', 'Perempuan']} />
+  190 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+> 191 |                   <InputField label="Pekerjaan" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  192 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+  193 |                   <InputField label="Nomor Telepon Pribadi" name="phoneWali" type="tel" />
+  194 |                   <InputField label="Alamat Email Aktif" name="emailWali" type="email" />
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |  react-hooks/static-components
+  192:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  190 |                   <InputField label="Peran Sebagai" name="peran" options={['Ayah', 'Ibu', 'Wali']} />
+  191 |                   <InputField label="Pekerjaan" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+> 192 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+      |                    ^^^^^^^^^^ This component is created during render
+  193 |                   <InputField label="Nomor Telepon Pribadi" name="phoneWali" type="tel" />
+  194 |                   <InputField label="Alamat Email Aktif" name="emailWali" type="email" />
+  195 |                   <div className="md:col-span-2">
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |                                                          react-hooks/static-components
+  193:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  191 |                   <InputField label="Pekerjaan" name="pekerjaanWali" options={['PNS / ASN', 'Wiraswasta', 'Pegawai Swasta', 'Lainnya']} />
+  192 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+> 193 |                   <InputField label="Nomor Telepon Pribadi" name="phoneWali" type="tel" />
+      |                    ^^^^^^^^^^ This component is created during render
+  194 |                   <InputField label="Alamat Email Aktif" name="emailWali" type="email" />
+  195 |                   <div className="md:col-span-2">
+  196 |                     <InputField label="Alamat Lengkap (Sesuai KTP)" name="alamatKtpWali" />
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |                                                                    react-hooks/static-components
+  194:20  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  192 |                   <InputField label="Pendidikan Terakhir" name="pendidikanWali" options={['SD/Sederajat', 'SMP/Sederajat', 'SMA/Sederajat', 'S1/S2/S3']} />
+  193 |                   <InputField label="Nomor Telepon Pribadi" name="phoneWali" type="tel" />
+> 194 |                   <InputField label="Alamat Email Aktif" name="emailWali" type="email" />
+      |                    ^^^^^^^^^^ This component is created during render
+  195 |                   <div className="md:col-span-2">
+  196 |                     <InputField label="Alamat Lengkap (Sesuai KTP)" name="alamatKtpWali" />
+  197 |                   </div>
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |                                                                                                                                                                                      react-hooks/static-components
+  196:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  194 |                   <InputField label="Alamat Email Aktif" name="emailWali" type="email" />
+  195 |                   <div className="md:col-span-2">
+> 196 |                     <InputField label="Alamat Lengkap (Sesuai KTP)" name="alamatKtpWali" />
+      |                      ^^^^^^^^^^ This component is created during render
+  197 |                   </div>
+  198 |                   <div className="md:col-span-2">
+  199 |                     <InputField label="Alamat Domisili (Tempat Tinggal Saat Ini)" name="alamatDomisiliWali" />
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |                                                                                                                                                                                                                                                                          react-hooks/static-components
+  199:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  197 |                   </div>
+  198 |                   <div className="md:col-span-2">
+> 199 |                     <InputField label="Alamat Domisili (Tempat Tinggal Saat Ini)" name="alamatDomisiliWali" />
+      |                      ^^^^^^^^^^ This component is created during render
+  200 |                   </div>
+  201 |                 </div>
+  202 |               </div>
+
+  30 |   };
+  31 |
+> 32 |   const InputField = ({ label, name, type = 'text', readOnlyIfEditing = false, options = [] }) => {
+     |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |     if (isEditing && !readOnlyIfEditing && activeTab === 'biodata') {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |       return (
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 64 |     );
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 65 |   };
+     | ^^^^ The component is created during render here
+  66 |
+  67 |   const currentFullName = `${formData.namaDepanWali} ${formData.namaBelakangWali}`;
+  68 |                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/static-components
+
+/Users/user/Desktop/Desaign Baru/src/pages/SantriBaru.jsx
+  16:9  warning  The 'tableData' array makes the dependencies of useMemo Hook (at line 29) change on every render. Move it inside the useMemo callback. Alternatively, wrap the initialization of 'tableData' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+/Users/user/Desktop/Desaign Baru/test-puppeteer.js
+  1:19  error  'require' is not defined  no-undef
+
+✖ 73 problems (66 errors, 7 warnings)
+

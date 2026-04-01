@@ -10,7 +10,7 @@ export default function DataRekening() {
   const tableData = [
     { id: '1', reqId: '100201993', initial: 'M', initialBg: 'from-blue-500 to-indigo-500 shadow-blue-500/30', nama: 'Moh. Raja', asrama: 'Asrama Putra A', saldo: 'Rp 1.500.000', status: 'Aktif', update: '12 Okt 2026' },
     { id: '2', reqId: '100201994', initial: 'A', initialBg: 'from-emerald-500 to-teal-500 shadow-emerald-500/30', nama: 'Ahmad Faisal', asrama: 'Asrama Putra B', saldo: 'Rp 750.000', status: 'Aktif', update: '10 Okt 2026' },
-    { id: '3', reqId: '100201995', initial: 'S', initialBg: 'from-[#FB8500] to-orange-500 shadow-orange-500/30', nama: 'Siti Aminah', asrama: 'Asrama Putri A', saldo: 'Rp 2.100.000', status: 'Aktif', update: '15 Okt 2026' },
+    { id: '3', reqId: '100201995', initial: 'S', initialBg: 'from-[#FCD526] to-orange-500 shadow-orange-500/30', nama: 'Siti Aminah', asrama: 'Asrama Putri A', saldo: 'Rp 2.100.000', status: 'Aktif', update: '15 Okt 2026' },
     { id: '4', reqId: '100201996', initial: 'F', initialBg: 'from-pink-500 to-rose-500 shadow-pink-500/30', nama: 'Fathur Rohman', asrama: 'Asrama Putra C', saldo: 'Rp 60.000', status: 'Blokir', update: '01 Okt 2026' },
     { id: '5', reqId: '100201997', initial: 'Z', initialBg: 'from-purple-500 to-violet-500 shadow-purple-500/30', nama: 'Zainab', asrama: 'Asrama Putri C', saldo: 'Rp 3.400.000', status: 'Aktif', update: '14 Okt 2026' },
     { id: '6', reqId: '100201998', initial: 'K', initialBg: 'from-blue-400 to-cyan-500 shadow-blue-500/30', nama: 'Kamaluddin', asrama: 'Asrama Putra B', saldo: 'Rp 120.000', status: 'Aktif', update: '11 Okt 2026' },
@@ -28,10 +28,10 @@ export default function DataRekening() {
       {/* Header & Main Actions */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8 text-left">
         <div>
-          <h2 className="text-2xl font-extrabold text-[#023047] dark:text-white tracking-tight">Data Rekening Santri</h2>
+          <h2 className="text-2xl font-extrabold text-[#000052] dark:text-white tracking-tight">Data Rekening Santri</h2>
           <p className="text-[13.5px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Manajemen rekening bank internal, saldo deposit, dan status kartu santri.</p>
         </div>
-        <button className="flex items-center justify-center gap-2 bg-[#FB8500] hover:bg-[#e07700] text-white px-5 py-3 rounded-xl font-bold shadow-lg shadow-[#FB8500]/30 transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm">
+        <button className="flex items-center justify-center gap-2 bg-[#FCD526] hover:bg-[#e3be22] text-white px-5 py-3 rounded-xl font-bold shadow-lg shadow-[#FCD526]/30 transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm">
           <Plus size={18} weight="bold" />
           <span className="text-[14px]">Buka Rekening</span>
         </button>
@@ -104,7 +104,7 @@ export default function DataRekening() {
                           {row.initial}
                         </div>
                         <div className="flex flex-col">
-                          <span className="font-extrabold text-[#023047] dark:text-white text-[14.5px]">{row.nama}</span>
+                          <span className="font-extrabold text-[#000052] dark:text-white text-[14.5px]">{row.nama}</span>
                           <span className="text-slate-400 font-medium text-[12px] mt-0.5">{row.asrama}</span>
                         </div>
                       </div>
@@ -146,7 +146,7 @@ export default function DataRekening() {
                         <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-emerald-600 hover:bg-emerald-50 hover:border-emerald-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Riwayat Mutasi">
                           <Receipt size={16} weight="regular" />
                         </button>
-                        <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#FB8500] hover:bg-orange-50 hover:border-orange-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Edit Detail">
+                        <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#FCD526] hover:bg-orange-50 hover:border-orange-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Edit Detail">
                           <PencilSimple size={16} weight="regular" />
                         </button>
                       </div>
@@ -177,10 +177,10 @@ export default function DataRekening() {
             <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors disabled:opacity-50" disabled>
               <CaretLeft size={16} weight="bold" />
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#023047] dark:bg-slate-700 text-white font-extrabold text-[13px] shadow-md shadow-[#023047]/20">
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#000052] dark:bg-slate-700 text-white font-extrabold text-[13px] shadow-md shadow-[#000052]/20">
               1
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#023047] dark:hover:text-white transition-colors" disabled>
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#000052] dark:hover:text-white transition-colors" disabled>
               <CaretRight size={16} weight="bold" />
             </button>
           </div>

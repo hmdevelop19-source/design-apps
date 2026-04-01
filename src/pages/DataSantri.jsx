@@ -12,7 +12,7 @@ export default function DataSantri() {
     { initial: 'S', initialBg: 'from-pink-500 to-rose-500 shadow-pink-500/30', name: 'Siti Aminah', nis: '12S002', kelas: 'Kelas 7', rombel: 'Rombel B', asrama: 'Fatimah-03', asramaType: 'asrama', wali: 'Hasan', phone: '08987654321', status: 'Aktif' },
     { initial: 'A', initialBg: 'from-emerald-500 to-teal-500 shadow-emerald-500/30', name: 'Ahmad Zaky', nis: '12S003', kelas: 'Kelas 10', rombel: 'Rombel IPA 1', asrama: 'Umar-05', asramaType: 'asrama', wali: 'Zulkifli', phone: '08112233445', status: 'Non-Aktif' },
     { initial: 'D', initialBg: 'from-violet-500 to-fuchsia-500 shadow-violet-500/30', name: 'Dewi Sartika', nis: '12S004', kelas: 'Kelas 9', rombel: 'Rombel C', asrama: 'Pulang', asramaType: 'pulang', wali: 'Budi', phone: '08556677889', status: 'Aktif' },
-    { initial: 'B', initialBg: 'from-[#FB8500] to-[#FFB703] shadow-[#FB8500]/30', name: 'Budi Santoso', nis: '12S005', kelas: 'Kelas 8', rombel: 'Rombel A', asrama: 'Ali-02', asramaType: 'asrama', wali: 'Supri', phone: '08778899001', status: 'Aktif' },
+    { initial: 'B', initialBg: 'from-[#FCD526] to-[#FCD526] shadow-[#FCD526]/30', name: 'Budi Santoso', nis: '12S005', kelas: 'Kelas 8', rombel: 'Rombel A', asrama: 'Ali-02', asramaType: 'asrama', wali: 'Supri', phone: '08778899001', status: 'Aktif' },
   ];
 
   const filteredData = useMemo(() => {
@@ -97,7 +97,7 @@ export default function DataSantri() {
                           {row.initial}
                         </div>
                         <div className="flex flex-col">
-                          <span className="font-extrabold text-[#023047] dark:text-white text-[14.5px]">{row.name}</span>
+                          <span className="font-extrabold text-[#000052] dark:text-white text-[14.5px]">{row.name}</span>
                           <span className="text-slate-400 font-medium text-[12px] mt-0.5">NIS: <span className="text-slate-500 dark:text-slate-300 font-semibold">{row.nis}</span></span>
                         </div>
                       </div>
@@ -161,7 +161,7 @@ export default function DataSantri() {
                         </button>
                         <button 
                           onClick={() => { setSelectedSantri(row); setViewMode('detail'); /* Should trigger edit mode in DetailSantri ideally, but passing state gives idea */ }}
-                          className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#FB8500] hover:bg-orange-50 hover:border-orange-200 dark:hover:bg-orange-500/10 dark:hover:text-orange-400 dark:hover:border-orange-500/30 transition-all bg-white dark:bg-transparent shadow-sm"
+                          className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#FCD526] hover:bg-orange-50 hover:border-orange-200 dark:hover:bg-orange-500/10 dark:hover:text-orange-400 dark:hover:border-orange-500/30 transition-all bg-white dark:bg-transparent shadow-sm"
                         >
                           <PencilSimple size={16} weight="regular" />
                         </button>
@@ -193,16 +193,16 @@ export default function DataSantri() {
             <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors disabled:opacity-50" disabled>
               <CaretLeft size={16} weight="bold" />
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#023047] dark:bg-slate-700 text-white font-extrabold text-[13px] shadow-md shadow-[#023047]/20">
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#000052] dark:bg-slate-700 text-white font-extrabold text-[13px] shadow-md shadow-[#000052]/20">
               1
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-300 font-bold text-[13px] hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#023047] dark:hover:text-white transition-colors">
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-300 font-bold text-[13px] hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#000052] dark:hover:text-white transition-colors">
               2
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-300 font-bold text-[13px] hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#023047] dark:hover:text-white transition-colors">
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-300 font-bold text-[13px] hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#000052] dark:hover:text-white transition-colors">
               3
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#023047] dark:hover:text-white transition-colors">
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#000052] dark:hover:text-white transition-colors">
               <CaretRightIcon size={16} weight="bold" />
             </button>
           </div>

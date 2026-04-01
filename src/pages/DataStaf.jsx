@@ -10,7 +10,7 @@ export default function DataStaf() {
   const tableData = [
     { id: 'STF-201', initial: 'M', initialBg: 'from-blue-500 to-indigo-500 shadow-blue-500/30', nama: 'Muhammad Ridwan', nip: '198501012010011001', kontak: '0812-3456-7890', email: 'ridwan@pesantren.id', role: 'Kepala Tata Usaha', departemen: 'Administrasi', status: 'Aktif' },
     { id: 'STF-202', initial: 'F', initialBg: 'from-emerald-500 to-teal-500 shadow-emerald-500/30', nama: 'Fatimah Az-Zahra', nip: '199002022015022002', kontak: '0813-4567-8901', email: 'fatimah@pesantren.id', role: 'Staf Keuangan', departemen: 'Keuangan', status: 'Aktif' },
-    { id: 'STF-203', initial: 'A', initialBg: 'from-[#FB8500] to-orange-500 shadow-orange-500/30', nama: 'Ahmad Syafii', nip: '198803032014031003', kontak: '0852-5678-9012', email: 'ahmad@pesantren.id', role: 'Kepala Keamanan', departemen: 'Kamtib', status: 'Cuti' },
+    { id: 'STF-203', initial: 'A', initialBg: 'from-[#FCD526] to-orange-500 shadow-orange-500/30', nama: 'Ahmad Syafii', nip: '198803032014031003', kontak: '0852-5678-9012', email: 'ahmad@pesantren.id', role: 'Kepala Keamanan', departemen: 'Kamtib', status: 'Cuti' },
     { id: 'STF-204', initial: 'S', initialBg: 'from-pink-500 to-rose-500 shadow-pink-500/30', nama: 'Siti Aminah', nip: '199204042018042004', kontak: '0821-6789-0123', email: 'siti@pesantren.id', role: 'Staf HRD', departemen: 'Kepegawaian', status: 'Aktif' },
     { id: 'STF-205', initial: 'H', initialBg: 'from-purple-500 to-violet-500 shadow-purple-500/30', nama: 'Hasan Basri', nip: '198705052012051005', kontak: '0811-7890-1234', email: 'hasan@pesantren.id', role: 'Koordinator IT', departemen: 'Teknologi Informasi', status: 'Non-Aktif' },
     { id: 'STF-206', initial: 'U', initialBg: 'from-blue-400 to-cyan-500 shadow-blue-500/30', nama: 'Umar Khalid', nip: '199506062020061006', kontak: '0822-8901-2345', email: 'umar@pesantren.id', role: 'Staf Sarana Prasarana', departemen: 'Logistik', status: 'Aktif' },
@@ -29,10 +29,10 @@ export default function DataStaf() {
       {/* Header & Main Actions */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8 text-left">
         <div>
-          <h2 className="text-2xl font-extrabold text-[#023047] dark:text-white tracking-tight">Manajemen Data Staf</h2>
+          <h2 className="text-2xl font-extrabold text-[#000052] dark:text-white tracking-tight">Manajemen Data Staf</h2>
           <p className="text-[13.5px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Kelola informasi pegawai, staf operasional, dan admin pondok.</p>
         </div>
-        <button className="flex items-center justify-center gap-2 bg-[#FB8500] hover:bg-[#e07700] text-white px-5 py-3 rounded-xl font-bold shadow-lg shadow-[#FB8500]/30 transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm">
+        <button className="flex items-center justify-center gap-2 bg-[#FCD526] hover:bg-[#e3be22] text-white px-5 py-3 rounded-xl font-bold shadow-lg shadow-[#FCD526]/30 transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm">
           <UserPlus size={18} weight="bold" />
           <span className="text-[14px]">Tambah Staf</span>
         </button>
@@ -108,7 +108,7 @@ export default function DataStaf() {
                           {row.initial}
                         </div>
                         <div className="flex flex-col">
-                          <span className="font-extrabold text-[#023047] dark:text-white text-[14.5px]">{row.nama}</span>
+                          <span className="font-extrabold text-[#000052] dark:text-white text-[14.5px]">{row.nama}</span>
                           <span className="text-slate-400 font-medium text-[12px] mt-0.5">NIP: <span className="text-slate-500 dark:text-slate-300 font-semibold">{row.nip}</span></span>
                         </div>
                       </div>
@@ -157,7 +157,7 @@ export default function DataStaf() {
                         <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Lihat Profil">
                           <Eye size={16} weight="regular" />
                         </button>
-                        <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#FB8500] hover:bg-orange-50 hover:border-orange-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Edit Data">
+                        <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-[#FCD526] hover:bg-orange-50 hover:border-orange-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Edit Data">
                           <PencilSimple size={16} weight="regular" />
                         </button>
                         <button className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 text-slate-500 hover:text-red-600 hover:bg-red-50 hover:border-red-200 transition-all bg-white dark:bg-slate-800 shadow-sm" title="Hapus Staf">
@@ -191,10 +191,10 @@ export default function DataStaf() {
             <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors disabled:opacity-50" disabled>
               <CaretLeft size={16} weight="bold" />
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#023047] dark:bg-slate-700 text-white font-extrabold text-[13px] shadow-md shadow-[#023047]/20">
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#000052] dark:bg-slate-700 text-white font-extrabold text-[13px] shadow-md shadow-[#000052]/20">
               1
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#023047] dark:hover:text-white transition-colors" disabled>
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#000052] dark:hover:text-white transition-colors" disabled>
               <CaretRight size={16} weight="bold" />
             </button>
           </div>

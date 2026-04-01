@@ -85,7 +85,7 @@ export default function DetailSantri({ santri, onBack }) {
     return (
       <div className="space-y-1">
         <span className="text-[11px] text-slate-400 dark:text-slate-500 font-bold tracking-widest uppercase">{label}</span>
-        <p className="text-[14px] font-extrabold text-[#023047] dark:text-white">{formData[name] || '-'}</p>
+        <p className="text-[14px] font-extrabold text-[#000052] dark:text-white">{formData[name] || '-'}</p>
       </div>
     );
   };
@@ -96,7 +96,7 @@ export default function DetailSantri({ santri, onBack }) {
     <div className="animate-fade-in-right pb-10 w-full">
       {/* Top Banner and Navigation */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-        <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-[#FB8500] font-bold transition-all hover:-translate-x-1">
+        <button onClick={onBack} className="flex items-center gap-2 text-slate-500 hover:text-[#FCD526] font-bold transition-all hover:-translate-x-1">
           <ArrowLeft size={18} weight="bold" />
           <span className="text-[13.5px]">Kembali ke Data Santri</span>
         </button>
@@ -118,7 +118,7 @@ export default function DetailSantri({ santri, onBack }) {
                 <span className="hidden sm:inline">Cetak Portfolio</span>
               </button>
               {isFormTabActive && (
-                <button onClick={() => setIsEditing(true)} className="px-5 py-2.5 bg-[#FB8500] text-white rounded-xl hover:bg-[#e07700] flex items-center gap-2 font-bold shadow-lg shadow-[#FB8500]/20 transition-transform active:scale-95">
+                <button onClick={() => setIsEditing(true)} className="px-5 py-2.5 bg-[#FCD526] text-white rounded-xl hover:bg-[#e3be22] flex items-center gap-2 font-bold shadow-lg shadow-[#FCD526]/20 transition-transform active:scale-95">
                   <PencilSimple size={18} weight="fill" /> Edit Biodata
                 </button>
               )}
@@ -132,7 +132,7 @@ export default function DetailSantri({ santri, onBack }) {
         {/* Left Column: Profile Card */}
         <div className="xl:col-span-1 space-y-8">
           <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex flex-col items-center relative overflow-hidden sticky top-24">
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-[#023047] to-[#011c29]"></div>
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-[#000052] to-[#000020]"></div>
             
             <div className="relative mt-6 mb-5 group">
               <div className={`w-28 h-28 rounded-2xl bg-gradient-to-tr ${santri?.initialBg || 'from-blue-500 to-indigo-500'} flex items-center justify-center text-4xl font-extrabold text-white shadow-xl shadow-blue-500/30 border-4 border-white dark:border-bg-cardDark z-10 transition-transform group-hover:scale-105 duration-300`}>
@@ -145,7 +145,7 @@ export default function DetailSantri({ santri, onBack }) {
               )}
             </div>
             
-            <h2 className="text-xl font-black text-[#023047] dark:text-white text-center pb-0.5">{formData.namaDepanSantri} {formData.namaBelakangSantri}</h2>
+            <h2 className="text-xl font-black text-[#000052] dark:text-white text-center pb-0.5">{formData.namaDepanSantri} {formData.namaBelakangSantri}</h2>
             <p className="text-slate-500 font-bold text-[13px] mt-1 text-center bg-slate-100 dark:bg-slate-800/50 px-3 py-1 rounded-md tracking-wider">NIS: {formData.nis}</p>
             
             <div className="mt-6 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400 font-black text-[11.5px] border border-emerald-100 dark:border-emerald-500/20 tracking-widest shadow-sm">
@@ -158,11 +158,11 @@ export default function DetailSantri({ santri, onBack }) {
             <div className="w-full space-y-5">
               <div className="flex items-center justify-between text-[13.5px]">
                 <span className="text-slate-400 font-bold">Asrama Saat Ini</span>
-                <span className="text-[#023047] dark:text-white font-black">{santri?.asrama || 'Gedung Ali-01'}</span>
+                <span className="text-[#000052] dark:text-white font-black">{santri?.asrama || 'Gedung Ali-01'}</span>
               </div>
               <div className="flex items-center justify-between text-[13.5px]">
                 <span className="text-slate-400 font-bold">Kelas & Rombel</span>
-                <span className="text-[#023047] dark:text-white font-black">{santri?.kelas || 'Kelas 8'} - {santri?.rombel || 'A'}</span>
+                <span className="text-[#000052] dark:text-white font-black">{santri?.kelas || 'Kelas 8'} - {santri?.rombel || 'A'}</span>
               </div>
               <div className="flex items-center justify-between text-[13.5px]">
                 <span className="text-slate-400 font-bold">Program Pesantren</span>
@@ -179,21 +179,21 @@ export default function DetailSantri({ santri, onBack }) {
           <div className="flex flex-wrap items-center justify-start p-1.5 bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-2xl border border-slate-200/60 dark:border-slate-800 shadow-[0_4px_20px_rgb(0,0,0,0.02)] w-max max-w-full overflow-x-auto custom-scrollbar">
             <button 
               onClick={() => { setActiveTab('biodata'); setIsEditing(false); }}
-              className={`px-6 py-3 rounded-xl font-bold text-[13.5px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'biodata' ? 'bg-[#023047] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+              className={`px-6 py-3 rounded-xl font-bold text-[13.5px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'biodata' ? 'bg-[#000052] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
             >
               <UserCircle size={18} weight={activeTab === 'biodata' ? "fill" : "bold"} />
               Biodata Utama
             </button>
             <button 
               onClick={() => { setActiveTab('akademik'); setIsEditing(false); }}
-              className={`px-6 py-3 rounded-xl font-bold text-[13.5px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'akademik' ? 'bg-[#023047] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+              className={`px-6 py-3 rounded-xl font-bold text-[13.5px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'akademik' ? 'bg-[#000052] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
             >
               <GraduationCap size={18} weight={activeTab === 'akademik' ? "fill" : "bold"} />
               Historis & Asrama
             </button>
             <button 
               onClick={() => { setActiveTab('catatan'); setIsEditing(false); }}
-              className={`px-6 py-3 rounded-xl font-bold text-[13.5px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'catatan' ? 'bg-[#023047] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
+              className={`px-6 py-3 rounded-xl font-bold text-[13.5px] transition-all whitespace-nowrap flex items-center gap-2 ${activeTab === 'catatan' ? 'bg-[#000052] text-white shadow-md' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'}`}
             >
               <Trophy size={18} weight={activeTab === 'catatan' ? "fill" : "bold"} />
               Rekam Jejak
@@ -205,10 +205,10 @@ export default function DetailSantri({ santri, onBack }) {
             <div className="space-y-6 animate-fade-in-up">
               {/* Card 1: Pribadi */}
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                {isEditing && activeTab === 'biodata' && <div className="absolute top-0 left-0 w-1 h-full bg-[#FB8500]"></div>}
+                {isEditing && activeTab === 'biodata' && <div className="absolute top-0 left-0 w-1 h-full bg-[#FCD526]"></div>}
                 
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
-                  <UserCircle size={22} weight="fill" className={isEditing && activeTab === 'biodata' ? "text-[#FB8500]" : "text-blue-500"} />
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                  <UserCircle size={22} weight="fill" className={isEditing && activeTab === 'biodata' ? "text-[#FCD526]" : "text-blue-500"} />
                   Informasi Pribadi Santri
                 </h3>
                 
@@ -230,10 +230,10 @@ export default function DetailSantri({ santri, onBack }) {
 
                {/* Card 2: Wali */}
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                {isEditing && activeTab === 'biodata' && <div className="absolute top-0 left-0 w-1 h-full bg-[#FB8500]"></div>}
+                {isEditing && activeTab === 'biodata' && <div className="absolute top-0 left-0 w-1 h-full bg-[#FCD526]"></div>}
                 
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
-                  <Fingerprint size={22} weight="fill" className={isEditing && activeTab === 'biodata' ? "text-[#FB8500]" : "text-emerald-500"} />
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                  <Fingerprint size={22} weight="fill" className={isEditing && activeTab === 'biodata' ? "text-[#FCD526]" : "text-emerald-500"} />
                   Data Wali Penanggungjawab
                 </h3>
                 
@@ -255,10 +255,10 @@ export default function DetailSantri({ santri, onBack }) {
               
               {/* Card 3: Pendidikan Terakhir */}
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                {isEditing && activeTab === 'akademik' && <div className="absolute top-0 left-0 w-1 h-full bg-[#FB8500]"></div>}
+                {isEditing && activeTab === 'akademik' && <div className="absolute top-0 left-0 w-1 h-full bg-[#FCD526]"></div>}
                 
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
-                  <BookOpen size={22} weight="fill" className={isEditing && activeTab === 'akademik' ? "text-[#FB8500]" : "text-purple-500"} />
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                  <BookOpen size={22} weight="fill" className={isEditing && activeTab === 'akademik' ? "text-[#FCD526]" : "text-purple-500"} />
                   Riwayat Pendidikan Pesantren
                 </h3>
                 
@@ -283,7 +283,7 @@ export default function DetailSantri({ santri, onBack }) {
 
               {/* Card 4: Asrama */}
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
                   <Bed size={22} weight="fill" className="text-teal-500" />
                   Riwayat Penempatan Asrama
                 </h3>
@@ -295,7 +295,7 @@ export default function DetailSantri({ santri, onBack }) {
                       <Bed size={20} weight="fill" />
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-[#023047] dark:text-slate-200 text-[14px]">Gedung Ali - Kamar 01</h4>
+                      <h4 className="font-extrabold text-[#000052] dark:text-slate-200 text-[14px]">Gedung Ali - Kamar 01</h4>
                       <p className="text-[12.5px] font-medium text-slate-500 mt-1">Asrama Putra Terpadu</p>
                       <p className="text-[12px] font-bold text-teal-600 dark:text-teal-400 mt-1.5 flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span> Aktif Sejak: Juli 2024
@@ -309,7 +309,7 @@ export default function DetailSantri({ santri, onBack }) {
                       <House size={20} weight="fill" />
                     </div>
                     <div className="opacity-70">
-                      <h4 className="font-extrabold text-[#023047] dark:text-slate-200 text-[14px]">Gedung Umar - Kamar 05</h4>
+                      <h4 className="font-extrabold text-[#000052] dark:text-slate-200 text-[14px]">Gedung Umar - Kamar 05</h4>
                       <p className="text-[12.5px] font-medium text-slate-500 mt-1">Pemindahan Kelas 7</p>
                       <p className="text-[12px] font-bold text-slate-400 mt-1.5 flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Juli 2023 - Juni 2024
@@ -329,7 +329,7 @@ export default function DetailSantri({ santri, onBack }) {
               
               {/* Card 5: Prestasi */}
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
                   <Trophy size={22} weight="fill" className="text-amber-500" />
                   Pencapaian & Prestasi
                 </h3>
@@ -337,7 +337,7 @@ export default function DetailSantri({ santri, onBack }) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50/50 dark:from-amber-500/10 dark:to-orange-500/5 border border-amber-100 dark:border-amber-500/20">
                     <div className="flex items-start justify-between">
-                      <h4 className="font-extrabold text-[#023047] dark:text-slate-200 text-[14px] leading-tight pr-4">
+                      <h4 className="font-extrabold text-[#000052] dark:text-slate-200 text-[14px] leading-tight pr-4">
                         Juara 1 Pidato B. Arab
                       </h4>
                       <Star size={18} weight="fill" className="text-amber-500 shrink-0" />
@@ -350,7 +350,7 @@ export default function DetailSantri({ santri, onBack }) {
 
                   <div className="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50/50 dark:from-amber-500/10 dark:to-orange-500/5 border border-amber-100 dark:border-amber-500/20">
                     <div className="flex items-start justify-between">
-                      <h4 className="font-extrabold text-[#023047] dark:text-slate-200 text-[14px] leading-tight pr-4">
+                      <h4 className="font-extrabold text-[#000052] dark:text-slate-200 text-[14px] leading-tight pr-4">
                         Hafalan 5 Juz (Mutqin)
                       </h4>
                       <Star size={18} weight="fill" className="text-amber-500 shrink-0" />
@@ -365,7 +365,7 @@ export default function DetailSantri({ santri, onBack }) {
 
               {/* Card 6: Pelanggaran */}
               <div className="bg-white/80 dark:bg-bg-cardDark/90 backdrop-blur-xl rounded-3xl border border-slate-200/60 dark:border-slate-800 p-8 shadow-[0_4px_20px_rgb(0,0,0,0.02)] relative overflow-hidden">
-                <h3 className="text-[14px] font-black text-[#023047] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
+                <h3 className="text-[14px] font-black text-[#000052] dark:text-white mb-7 uppercase tracking-widest flex items-center gap-2">
                   <WarningCircle size={22} weight="fill" className="text-rose-500" />
                   Catatan Pelanggaran (Kamtib)
                 </h3>
@@ -377,7 +377,7 @@ export default function DetailSantri({ santri, onBack }) {
                     </div>
                     <div className="flex-1">
                       <div className="flex sm:items-center flex-col sm:flex-row justify-between gap-1 mb-1">
-                        <h4 className="font-extrabold text-[#023047] dark:text-slate-200 text-[14px]">Terlambat Shalat Subuh Berjamaah</h4>
+                        <h4 className="font-extrabold text-[#000052] dark:text-slate-200 text-[14px]">Terlambat Shalat Subuh Berjamaah</h4>
                         <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400 uppercase tracking-widest w-max">Ringan</span>
                       </div>
                       <p className="text-[12px] font-bold text-slate-400 mt-1 flex items-center justify-between">

@@ -53,11 +53,11 @@ export default function Sidebar({ isOpen, onClose, onNavigate, activePage }) {
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 left-0 h-full w-[280px] bg-gradient-to-b from-[#023047] to-[#011c29] dark:from-[#0B1121] dark:to-[#050810] border-r border-white/5 z-50 transform transition-transform duration-300 ease-in-out lg:translate-x-0 overflow-y-auto custom-scrollbar ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed top-0 left-0 h-full w-[280px] bg-gradient-to-b from-[#000052] to-[#000020] dark:from-[#0B1121] dark:to-[#050810] border-r border-white/5 z-50 transform transition-transform duration-300 ease-in-out lg:translate-x-0 overflow-y-auto custom-scrollbar ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
-        <div className="h-[74px] flex items-center px-6 border-b border-white/5 sticky top-0 bg-[#023047]/90 dark:bg-[#0B1121]/90 backdrop-blur-xl z-20">
+        <div className="h-[74px] flex items-center px-6 border-b border-white/5 sticky top-0 bg-[#000052]/90 dark:bg-[#0B1121]/90 backdrop-blur-xl z-20">
           <div className="flex items-center gap-3">
-            <div className="w-[30px] h-[30px] rounded-[10px] bg-gradient-to-tr from-[#FB8500] to-orange-400 shadow-lg shadow-[#FB8500]/30 flex items-center justify-center text-white font-extrabold text-[16px]">
+            <div className="w-[30px] h-[30px] rounded-[10px] bg-gradient-to-tr from-[#FCD526] to-orange-400 shadow-lg shadow-[#FCD526]/30 flex items-center justify-center text-white font-extrabold text-[16px]">
               T
             </div>
             <span className="text-[18px] font-black tracking-widest text-white tracking-wide drop-shadow-sm">TAMJID</span>
@@ -85,13 +85,13 @@ export default function Sidebar({ isOpen, onClose, onNavigate, activePage }) {
                     }}
                     className={`group flex items-center px-3 py-[10px] mx-3 rounded-xl transition-all duration-300 font-medium ${
                       isActiveNode
-                        ? 'bg-gradient-to-r from-[#FB8500]/10 to-transparent text-white shadow-[inset_3px_0_0_0_#FB8500]' 
+                        ? 'bg-gradient-to-r from-[#FCD526]/10 to-transparent text-white shadow-[inset_3px_0_0_0_#FCD526]' 
                         : 'text-slate-400 hover:bg-white/5 hover:text-slate-100 hover:translate-x-1'
                       }`}
                   >
                     <div className={`flex items-center justify-center w-[34px] h-[34px] rounded-xl transition-all duration-300 ${
                       isActiveNode
-                        ? 'bg-[#FB8500]/15 text-[#FB8500] shadow-sm shadow-[#FB8500]/10' 
+                        ? 'bg-[#FCD526]/15 text-[#FCD526] shadow-sm shadow-[#FCD526]/10' 
                         : 'bg-transparent text-slate-400 group-hover:text-slate-300 group-hover:bg-white/5'
                     }`}>
                       <Icon size={18} weight={isActiveNode ? "fill" : "duotone"} className="shrink-0 transition-transform duration-300 group-hover:scale-110" />
@@ -101,7 +101,7 @@ export default function Sidebar({ isOpen, onClose, onNavigate, activePage }) {
                       <CaretDown
                         size={14}
                         weight="bold"
-                        className={`ml-auto shrink-0 transition-transform duration-300 ${isSubOpen ? 'rotate-180 text-[#FB8500]' : 'text-slate-500 group-hover:text-slate-300'}`}
+                        className={`ml-auto shrink-0 transition-transform duration-300 ${isSubOpen ? 'rotate-180 text-[#FCD526]' : 'text-slate-500 group-hover:text-slate-300'}`}
                       />
                     )}
                   </a>
@@ -131,7 +131,7 @@ export default function Sidebar({ isOpen, onClose, onNavigate, activePage }) {
                               >
                                 {/* Indicator Dot */}
                                 <div className={`absolute left-[10px] w-2 h-2 rounded-full border-2 transition-all duration-300 ${
-                                  isSubActive ? 'border-[#FB8500] bg-[#FFB703] shadow-[0_0_8px_rgba(251,133,0,0.6)]' : 'border-slate-600 bg-[#0F172A]'
+                                  isSubActive ? 'border-[#FCD526] bg-[#FCD526] shadow-[0_0_8px_rgba(251,133,0,0.6)]' : 'border-slate-600 bg-[#0F172A]'
                                 }`}></div>
                                 
                                 {subLabel}

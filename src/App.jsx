@@ -42,8 +42,8 @@ function App() {
   };
 
   const statData = [
-    { label: 'TOTAL SANTRI MUKIM', value: '1,450', icon: Users, iconColor: '#219EBC', badge: '+12 Minggu Ini', badgeColor: '#219EBC' },
-    { label: 'USTADZ TUGAS (DA\'I)', value: '85', icon: UserFocus, iconColor: '#FB8500', isDarkVariant: true, badge: 'Aktif Berdakwah' },
+    { label: 'TOTAL SANTRI MUKIM', value: '1,450', icon: Users, iconColor: '#00B0FB', badge: '+12 Minggu Ini', badgeColor: '#00B0FB' },
+    { label: 'USTADZ TUGAS (DA\'I)', value: '85', icon: UserFocus, iconColor: '#FCD526', isDarkVariant: true, badge: 'Aktif Berdakwah' },
     { label: 'SALDO DEPOSIT SANTRI', value: 'Rp 125.4jt', icon: Wallet, iconColor: '#3B82F6' },
     { label: 'SANTRI OPNAME / SAKIT', value: '5', icon: ChartLineUp, iconColor: '#EF4444', badge: 'Butuh Perhatian', badgeColor: '#EF4444' }
   ];

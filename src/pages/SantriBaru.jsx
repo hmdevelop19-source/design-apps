@@ -18,7 +18,7 @@ export default function SantriBaru() {
     { id: 'REG-2402', initial: 'S', initialBg: 'from-pink-500 to-rose-500 shadow-pink-500/30', nama: 'Siti Nurhaliza', nik: '3201123456789013', tanggal: '14 Mei 2024', asalSekolah: 'MTs Al-Hidayah', gelombang: 'Gelombang 1', status: 'Menunggu Ujian' },
     { id: 'REG-2403', initial: 'B', initialBg: 'from-emerald-500 to-teal-500 shadow-emerald-500/30', nama: 'Bintang Pratama', nik: '3201123456789014', tanggal: '15 Mei 2024', asalSekolah: 'SMP IT As-Salam', gelombang: 'Gelombang 1', status: 'Berkas Kurang' },
     { id: 'REG-2404', initial: 'Z', initialBg: 'from-purple-500 to-violet-500 shadow-purple-500/30', nama: 'Zahra Anisa', nik: '3201123456789015', tanggal: '02 Jun 2024', asalSekolah: 'SMPN 4 Jakarta', gelombang: 'Gelombang 2', status: 'Menunggu Ujian' },
-    { id: 'REG-2405', initial: 'D', initialBg: 'from-[#FB8500] to-orange-500 shadow-orange-500/30', nama: 'Daffa Ramadhan', nik: '3201123456789016', tanggal: '05 Jun 2024', asalSekolah: 'SDN 1 Bogor', gelombang: 'Gelombang 2', status: 'Diterima' },
+    { id: 'REG-2405', initial: 'D', initialBg: 'from-[#FCD526] to-orange-500 shadow-orange-500/30', nama: 'Daffa Ramadhan', nik: '3201123456789016', tanggal: '05 Jun 2024', asalSekolah: 'SDN 1 Bogor', gelombang: 'Gelombang 2', status: 'Diterima' },
   ];
 
   const filteredData = useMemo(() => {
@@ -524,12 +524,12 @@ export default function SantriBaru() {
       {/* Header & Main Actions */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8">
         <div>
-          <h2 className="text-2xl font-extrabold text-[#023047] dark:text-white tracking-tight">Pendaftar Santri Baru</h2>
+          <h2 className="text-2xl font-extrabold text-[#000052] dark:text-white tracking-tight">Pendaftar Santri Baru</h2>
           <p className="text-[13.5px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Kelola daftar calon santri yang sedang mendaftar di tahun ini.</p>
         </div>
         <button 
           onClick={() => setViewMode('form')}
-          className="flex items-center justify-center gap-2 bg-[#FB8500] hover:bg-[#e07700] text-white px-5 py-3 rounded-xl font-bold shadow-lg shadow-[#FB8500]/30 transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm"
+          className="flex items-center justify-center gap-2 bg-[#FCD526] hover:bg-[#e3be22] text-white px-5 py-3 rounded-xl font-bold shadow-lg shadow-[#FCD526]/30 transition-all hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm"
         >
           <UserPlus size={18} weight="bold" />
           <span className="text-[14px]">Tambah Pendaftar</span>
@@ -602,7 +602,7 @@ export default function SantriBaru() {
                           {row.initial}
                         </div>
                         <div className="flex flex-col">
-                          <span className="font-extrabold text-[#023047] dark:text-white text-[14.5px]">{row.nama}</span>
+                          <span className="font-extrabold text-[#000052] dark:text-white text-[14.5px]">{row.nama}</span>
                           <span className="text-slate-400 font-medium text-[12px] mt-0.5">ID: <span className="text-slate-500 dark:text-slate-300 font-semibold">{row.id}</span></span>
                         </div>
                       </div>
@@ -682,13 +682,13 @@ export default function SantriBaru() {
             <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors disabled:opacity-50" disabled>
               <CaretLeft size={16} weight="bold" />
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#023047] dark:bg-slate-700 text-white font-extrabold text-[13px] shadow-md shadow-[#023047]/20">
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#000052] dark:bg-slate-700 text-white font-extrabold text-[13px] shadow-md shadow-[#000052]/20">
               1
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-300 font-bold text-[13px] hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#023047] dark:hover:text-white transition-colors">
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-300 font-bold text-[13px] hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#000052] dark:hover:text-white transition-colors">
               2
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#023047] dark:hover:text-white transition-colors">
+            <button className="w-9 h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#000052] dark:hover:text-white transition-colors">
               <CaretRight size={16} weight="bold" />
             </button>
           </div>
